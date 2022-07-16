@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResponseData {
+public class ResponseOCRData {
 
     @Builder
     @Data
@@ -25,7 +25,7 @@ public class ResponseData {
     }
     @Builder
     @Data
-    public static class OCRTargetData {
+    public static class TargetData {
         private DataType dataType;
         private Long ocrDataId;
         private String imageUrl;
@@ -33,13 +33,13 @@ public class ResponseData {
 
         private List<OCRBoundingBox> boundingBox;
 
-        public static OCRTargetData of(OCRData ocrData) {
+        public static TargetData of(OCRData ocrData) {
             List<OCRBoundingBox> boundingBoxList = new ArrayList<>();
             for(com.devnus.belloga.labeling.data.domain.OCRBoundingBox ocrBoundingBox : ocrData.getBoundingBoxList()) {
                 boundingBoxList.add(OCRBoundingBox.of(ocrBoundingBox));
             }
 
-            return OCRTargetData.builder()
+            return TargetData.builder()
                     .dataType(DataType.OCR)
                     .ocrDataId(ocrData.getId())
                     .imageUrl(ocrData.getImageUrl())

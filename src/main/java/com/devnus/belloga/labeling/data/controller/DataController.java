@@ -3,7 +3,6 @@ package com.devnus.belloga.labeling.data.controller;
 import com.devnus.belloga.labeling.common.dto.CommonResponse;
 import com.devnus.belloga.labeling.data.domain.DataType;
 import com.devnus.belloga.labeling.data.service.OCRDataService;
-import com.devnus.belloga.labeling.data.service.OCRDataServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +20,7 @@ public class DataController {
     /**
      * 생성자 주입
      */
-    public DataController(OCRDataServiceImpl ocrDataService) {
+    public DataController(OCRDataService ocrDataService) {
         this.ocrDataService = ocrDataService;
     }
 

@@ -1,9 +1,9 @@
 package com.devnus.belloga.labeling.data.service;
 
-import com.devnus.belloga.labeling.data.dto.ResponseData;
+import com.devnus.belloga.labeling.data.dto.ResponseOCRData;
 
 import java.util.Optional;
 
 public interface OCRDataService {
-    Optional<ResponseData.OCRTargetData> getRandomTargetOCRData();
+    Optional<ResponseOCRData.TargetData> getRandomTargetOCRData();
 }
