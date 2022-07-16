@@ -2,6 +2,8 @@ plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id "org.asciidoctor.jvm.convert" version "3.3.2" //1
+
 }
 
 group = 'com.devnus.belloga'
@@ -11,6 +13,32 @@ sourceCompatibility = '11'
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
+	}
+}
+
+//2
+ext {
+	snippetsDir = file('build/generated-snippets')
+}
+
+//3
+asciidoctor {
+	dependsOn test
+	attributes 'snippets': snippetsDir
+	inputs.dir snippetsDir
+}
+
+asciidoctor.doFirst {  // 7
+	println("---------------- delete present asciidoctor.")
+	delete file('src/main/resources/static/docs')
+}
+
+//4
+bootJar {
+	dependsOn asciidoctor
+	copy {
+		from "${asciidoctor.outputDir}"
+		into 'src/main/resources/static/docs'
 	}
 }
 
@@ -28,6 +56,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation group: 'org.springframework.restdocs', name: 'spring-restdocs-mockmvc', version: '2.0.5.RELEASE'
 }
 
 tasks.named('test') {
