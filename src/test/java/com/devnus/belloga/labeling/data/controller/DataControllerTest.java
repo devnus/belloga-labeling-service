@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs
 @ActiveProfiles("test")
-public class DataControllerTests {
+public class DataControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -34,7 +34,7 @@ public class DataControllerTests {
 
     @Test
     @DisplayName("OCR 라벨링 대상 데이터 요청 API 성공 테스트")
-    void OCR_라벨링_대상_데이터_요청_API_성공 () throws Exception {
+    void requestOCRTargetDataSuccess () throws Exception {
         mockMvc.perform(RestDocumentationRequestBuilders.get("/api/v1/data/target/{dataType}", DataType.OCR)
                 .contentType(MediaType.APPLICATION_JSON)
         )
