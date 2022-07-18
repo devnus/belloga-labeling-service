@@ -53,6 +53,7 @@ public class DataControllerTest {
                                 fieldWithPath("response.imageUrl").description("OCR 데이터 이미지"),
                                 fieldWithPath("response.isLabeled").description("레이블링 여부"),
                                 fieldWithPath("response.boundingBox.[]").description("바운딩 박스 정보"),
+                                fieldWithPath("response.boundingBox.[].boundingBoxId").description("바운딩 박스 id").optional().type(JsonFieldType.NUMBER),
                                 fieldWithPath("response.boundingBox.[].x").description("바운딩 박스의 x좌표 리스트").optional().type(JsonFieldType.ARRAY),
                                 fieldWithPath("response.boundingBox.[].y").description("바운딩 박스의 y좌표 리스트").optional().type(JsonFieldType.ARRAY),
                                 fieldWithPath("error").description("error 발생 시 에러 정보")
