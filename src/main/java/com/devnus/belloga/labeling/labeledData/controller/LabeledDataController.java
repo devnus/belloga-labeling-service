@@ -1,6 +1,6 @@
 package com.devnus.belloga.labeling.labeledData.controller;
 
-import com.devnus.belloga.labeling.common.aop.annotation.AccountRole;
+import com.devnus.belloga.labeling.common.aop.annotation.UserRole;
 import com.devnus.belloga.labeling.common.aop.annotation.GetAccountIdentification;
 import com.devnus.belloga.labeling.common.dto.CommonResponse;
 import com.devnus.belloga.labeling.data.domain.DataType;
@@ -26,7 +26,7 @@ public class LabeledDataController {
      */
     @PostMapping("/v1/data/labeling/{type}")
     public ResponseEntity<CommonResponse> labelingData(@PathVariable("type") DataType type,
-                                                              @GetAccountIdentification(role = AccountRole.LABELER) String labelerId) {
+                                                              @GetAccountIdentification(role = UserRole.LABELER) String labelerId) {
         System.out.println(labelerId);
         System.out.println(type);
 

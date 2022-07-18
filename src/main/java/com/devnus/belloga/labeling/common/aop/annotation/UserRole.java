@@ -7,14 +7,14 @@ import lombok.Getter;
  * @author suhongkim
  */
 @Getter
-public enum AccountRole {
+public enum UserRole {
     ENTERPRISE("enterprise-id"),
     ADMIN("admin-id"),
     LABELER("labeler-id");
 
     private String key;
 
-    AccountRole(final String key) {
+    UserRole(final String key) {
         this.key = key;
     }
 }
