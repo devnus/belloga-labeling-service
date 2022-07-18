@@ -1,0 +1,15 @@
+[[api-labeling-bounding-box-ocr-data]]
+== OCR 데이터 바운딩박스 라벨링 수행 API
+OCR 바운딩 박스에 대해 라벨링을 수행합니다.
+
+====== 요청 형식
+include::{snippets}/labeling-bounding-box-ocr-data/http-request.adoc[]
+====== Request Body
+include::{snippets}/labeling-bounding-box-ocr-data/request-body.adoc[]
+====== 응답 형식
+include::{snippets}/labeling-bounding-box-ocr-data/http-response.adoc[]
+include::{snippets}/labeling-bounding-box-ocr-data/response-fields.adoc[]
+====== Response Body
+include::{snippets}/labeling-bounding-box-ocr-data/response-body.adoc[]
+====== Try with curl
+include::{snippets}/labeling-bounding-box-ocr-data/curl-request.adoc[]
