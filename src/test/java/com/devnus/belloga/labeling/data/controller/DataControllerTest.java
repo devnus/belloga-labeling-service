@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.context.ActiveProfiles;
@@ -26,6 +27,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs
 @ActiveProfiles("test")
+@EmbeddedKafka(
+        brokerProperties = {
+                "listeners=PLAINTEXT://localhost:9092"
+        },
+        ports = { 9092 })
 public class DataControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -53,6 +59,7 @@ public class DataControllerTest {
                                 fieldWithPath("response.imageUrl").description("OCR 데이터 이미지"),
                                 fieldWithPath("response.isLabeled").description("레이블링 여부"),
                                 fieldWithPath("response.boundingBox.[]").description("바운딩 박스 정보"),
+                                fieldWithPath("response.boundingBox.[].boundingBoxId").description("바운딩 박스 id").optional().type(JsonFieldType.NUMBER),
                                 fieldWithPath("response.boundingBox.[].x").description("바운딩 박스의 x좌표 리스트").optional().type(JsonFieldType.ARRAY),
                                 fieldWithPath("response.boundingBox.[].y").description("바운딩 박스의 y좌표 리스트").optional().type(JsonFieldType.ARRAY),
                                 fieldWithPath("error").description("error 발생 시 에러 정보")

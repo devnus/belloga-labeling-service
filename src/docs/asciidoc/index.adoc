@@ -12,3 +12,4 @@
 API 명세서 index.html이다.
 
 include::src/docs/asciidoc/request-ocr-target-data.adoc[]
+include::src/docs/asciidoc/labeling-bounding-box-ocr-data.adoc[]

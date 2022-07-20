@@ -24,3 +24,18 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+  kafka:
+    producer:
+      bootstrap-servers: 13.209.250.13:9092
+    consumer:
+      auto-offset-reset: earliest
+      bootstrap-servers: 13.209.250.13:9092
+      enable-auto-commit: false
+    listener:
+      ack-mode: manual
+
+app:
+  topic:
+    labeled-data:
+      pay-tmp-point-to-labeler: pay-tmp-point-to-labeler
