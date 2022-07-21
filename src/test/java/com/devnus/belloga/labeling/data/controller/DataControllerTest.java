@@ -41,7 +41,7 @@ public class DataControllerTest {
     @Test
     @DisplayName("OCR 라벨링 대상 데이터 요청 API 성공 테스트")
     void requestOCRTargetDataSuccess () throws Exception {
-        mockMvc.perform(RestDocumentationRequestBuilders.get("/api/v1/data/target/{dataType}", DataType.OCR)
+        mockMvc.perform(RestDocumentationRequestBuilders.get("/api/data/v1/target/{dataType}", DataType.OCR)
                 .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())

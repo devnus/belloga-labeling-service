@@ -48,7 +48,7 @@ public class LabeledOCRDataControllerTest {
                 String labelerId = "hello-labeler";
 
                 //when
-                mockMvc.perform(RestDocumentationRequestBuilders.post("/api/v1/ocr-data/labeling")
+                mockMvc.perform(RestDocumentationRequestBuilders.post("/api/labeled-data/v1/ocr-data")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(input))
                                 .header("labeler-id", labelerId) // 라벨링 수행하는 유저의 식별아이디, api gateway에서 받아온다.

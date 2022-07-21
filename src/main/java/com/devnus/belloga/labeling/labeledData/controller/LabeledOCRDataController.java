@@ -18,7 +18,7 @@ import javax.validation.Valid;
  * OCR 데이터의 레이블링 관련 컨트롤러이다.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/labeled-data")
 public class LabeledOCRDataController {
     private final LabeledOCRDataService labeledOCRDataService;
 
@@ -32,7 +32,7 @@ public class LabeledOCRDataController {
      * @param registerLabelingDto
      * @return CommonResponse
      */
-    @PostMapping("/v1/ocr-data/labeling")
+    @PostMapping("/v1/ocr-data")
     public ResponseEntity<CommonResponse> labelingOCRData(@GetAccountIdentification(role = UserRole.LABELER) String labelerId,
                                                           @Valid @RequestBody RequestLabeledOCRData.RegisterLabeling registerLabelingDto) {
 

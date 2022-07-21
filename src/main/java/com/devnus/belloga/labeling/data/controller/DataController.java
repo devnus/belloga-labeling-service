@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/data")
 public class DataController {
     private final OCRDataService ocrDataService;
 
@@ -29,7 +29,7 @@ public class DataController {
      * 타켓 데이터란 라벨링 수행해야하는 대상 데이터를 의미함
      * @param type
      */
-    @GetMapping("/v1/data/target/{type}")
+    @GetMapping("/v1/target/{type}")
     public ResponseEntity<CommonResponse> requestTargetData(@PathVariable("type")DataType type) {
         Object result = null; // OCR 타입 외 다른 유형의 데이터도 받도록 result를 별도로 선언
 
