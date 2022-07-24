@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: labeling-service
+  labels:
+    app: labeling-service
+    service: labeling-service
+spec:
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: labeling-service
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: belloga-labeling-service
+  labels:
+    account: labeling-service
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: labeling-service-v1
+  labels:
+    app: labeling-service
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: labeling-service
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: labeling-service
+        version: v1
+    spec:
+      serviceAccountName: belloga-labeling-service
+      containers:
+      - name: labeling-service
+        image: 023778162658.dkr.ecr.ap-northeast-2.amazonaws.com/belloga-labeling-service:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: local
