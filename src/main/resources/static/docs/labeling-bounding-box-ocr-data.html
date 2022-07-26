@@ -450,7 +450,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h6 id="_요청_형식">요청 형식</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/v1/ocr-data/labeling HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/labeled-data/v1/ocr-data HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 labeler-id: hello-labeler
 Content-Length: 41
@@ -479,7 +479,7 @@ Vary: Access-Control-Request-Headers
 Content-Type: application/json
 Content-Length: 132
 
-{"id":"01a8f2da-4faa-4199-b9bf-6a57fbc0be88","dateTime":"2022-07-18T16:06:08.668+00:00","success":true,"response":null,"error":null}</code></pre>
+{"id":"80cb0efd-ad5d-48f4-bd8e-9c7d1e4c4b74","dateTime":"2022-07-26T09:06:39.179+00:00","success":true,"response":null,"error":null}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -528,7 +528,7 @@ Content-Length: 132
 <h6 id="_response_body">Response Body</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code>{"id":"01a8f2da-4faa-4199-b9bf-6a57fbc0be88","dateTime":"2022-07-18T16:06:08.668+00:00","success":true,"response":null,"error":null}</code></pre>
+<pre class="highlight nowrap"><code>{"id":"80cb0efd-ad5d-48f4-bd8e-9c7d1e4c4b74","dateTime":"2022-07-26T09:06:39.179+00:00","success":true,"response":null,"error":null}</code></pre>
 </div>
 </div>
 </div>
@@ -536,7 +536,7 @@ Content-Length: 132
 <h6 id="_try_with_curl">Try with curl</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/v1/ocr-data/labeling' -i -X POST \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/labeled-data/v1/ocr-data' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -H 'labeler-id: hello-labeler' \
     -d '{"boundingBoxId":"1","label":"길동이"}'</code></pre>
@@ -549,7 +549,7 @@ Content-Length: 132
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-07-19 01:04:12 +0900
+Last updated 2022-07-21 13:44:11 +0900
 </div>
 </div>
 </body>

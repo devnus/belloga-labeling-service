@@ -450,13 +450,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h6 id="_요청_형식">요청 형식</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/v1/data/target/OCR HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/data/v1/target/OCR HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. /api/v1/data/target/{dataType}</caption>
+<caption class="title">Table 1. /api/data/v1/target/{dataType}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -492,9 +492,9 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json
-Content-Length: 370
+Content-Length: 372
 
-{"id":"c8dde2d4-2747-4a5d-8751-091f8a2fb8b7","dateTime":"2022-07-18T16:06:07.955+00:00","success":true,"response":{"dataType":"OCR","ocrDataId":2,"imageUrl":"https://belloga-dev-s3-raw-data-bucket.s3.ap-northeast-2.amazonaws.com/ocr-data/5350037-2005-0001-1289.JPG","isLabeled":false,"boundingBox":[{"boundingBoxId":6,"x":[10,10,10,10],"y":[10,10,10,10]}]},"error":null}</code></pre>
+{"id":"c5aeb890-c1d2-4650-88fb-5f51ef81b81b","dateTime":"2022-07-26T09:06:37.353+00:00","success":true,"response":{"dataType":"OCR","ocrDataId":10,"imageUrl":"https://belloga-dev-s3-raw-data-bucket.s3.ap-northeast-2.amazonaws.com/ocr-data/5350037-2005-0001-1297.JPG","isLabeled":false,"boundingBox":[{"boundingBoxId":14,"x":[10,10,10,10],"y":[10,10,10,10]}]},"error":null}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -578,7 +578,7 @@ Content-Length: 370
 <h6 id="_response_body">Response Body</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code>{"id":"c8dde2d4-2747-4a5d-8751-091f8a2fb8b7","dateTime":"2022-07-18T16:06:07.955+00:00","success":true,"response":{"dataType":"OCR","ocrDataId":2,"imageUrl":"https://belloga-dev-s3-raw-data-bucket.s3.ap-northeast-2.amazonaws.com/ocr-data/5350037-2005-0001-1289.JPG","isLabeled":false,"boundingBox":[{"boundingBoxId":6,"x":[10,10,10,10],"y":[10,10,10,10]}]},"error":null}</code></pre>
+<pre class="highlight nowrap"><code>{"id":"c5aeb890-c1d2-4650-88fb-5f51ef81b81b","dateTime":"2022-07-26T09:06:37.353+00:00","success":true,"response":{"dataType":"OCR","ocrDataId":10,"imageUrl":"https://belloga-dev-s3-raw-data-bucket.s3.ap-northeast-2.amazonaws.com/ocr-data/5350037-2005-0001-1297.JPG","isLabeled":false,"boundingBox":[{"boundingBoxId":14,"x":[10,10,10,10],"y":[10,10,10,10]}]},"error":null}</code></pre>
 </div>
 </div>
 </div>
@@ -586,7 +586,7 @@ Content-Length: 370
 <h6 id="_try_with_curl">Try with curl</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/v1/data/target/OCR' -i -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/data/v1/target/OCR' -i -X GET \
     -H 'Content-Type: application/json;charset=UTF-8'</code></pre>
 </div>
 </div>
