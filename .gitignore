@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+## docs 문서화된 것 무시
+src/main/resources/static/docs/
