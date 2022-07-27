@@ -17,37 +17,61 @@ INSERT INTO ocr_data(id, raw_data_id, image_url) VALUES(13,13,'https://belloga-d
 
 /* 임의의 바운딩 박스 */
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(1, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(1, 'RECTANGLE', 10,10,10,20,20,10,20,20);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(1, 'RECTANGLE', 10,20,10,10,10,10,10,10);
+VALUES(1, 'RECTANGLE', 30,30,30,50,50,30,50,50);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(1, 'RECTANGLE', 10,30,10,10,10,10,20,10);
+VALUES(1, 'RECTANGLE', 30,30,30,50,50,30,50,50);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(1, 'RECTANGLE', 10,40,10,10,10,10,500,10);
+VALUES(1, 'RECTANGLE', 30,30,30,50,50,30,50,50);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(1, 'RECTANGLE', 10,50,10,10,10,10,520,10);
+VALUES(1, 'RECTANGLE', 10,10,10,20,20,10,20,20);
 
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(2, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(2, 'RECTANGLE', 10,10,10,20,20,10,20,20);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(3, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(2, 'RECTANGLE', 30,30,30,50,50,30,50,50);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(4, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(3, 'RECTANGLE', 10,10,10,20,20,10,20,20);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(5, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(3, 'RECTANGLE', 30,30,30,50,50,30,50,50);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(6, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(4, 'RECTANGLE', 10,10,10,20,20,10,20,20);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(7, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(4, 'RECTANGLE', 30,30,30,50,50,30,50,50);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(8, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(5, 'RECTANGLE', 30,30,30,50,50,30,50,50);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(9, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(5, 'RECTANGLE', 10,10,10,20,20,10,20,20);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(10, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(6, 'RECTANGLE', 30,30,30,50,50,30,50,50);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(11, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(6, 'RECTANGLE', 10,10,10,20,20,10,20,20);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(12, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(7, 'RECTANGLE', 30,30,30,50,50,30,50,50);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(13, 'RECTANGLE', 10,10,10,10,10,10,10,10);
+VALUES(7, 'RECTANGLE', 10,10,10,20,20,10,20,20);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(8, 'RECTANGLE', 30,30,30,50,50,30,50,50);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(8, 'RECTANGLE', 10,10,10,20,20,10,20,20);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(9, 'RECTANGLE', 30,30,30,50,50,30,50,50);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(9, 'RECTANGLE', 10,10,10,20,20,10,20,20);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(10, 'RECTANGLE', 10,10,10,20,20,10,20,20);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(10, 'RECTANGLE', 30,30,30,50,50,30,50,50);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(11, 'RECTANGLE', 10,10,10,20,20,10,20,20);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(11, 'RECTANGLE', 30,30,30,50,50,30,50,50);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(12, 'RECTANGLE', 10,10,10,20,20,10,20,20);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(12, 'RECTANGLE', 30,30,30,50,50,30,50,50);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(13, 'RECTANGLE', 30,30,30,50,50,30,50,50);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
+VALUES(13, 'RECTANGLE', 10,10,10,20,20,10,20,20);
