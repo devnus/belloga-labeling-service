@@ -1,0 +1,198 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "rest docs + swagger UI",
+    "description" : "My API description",
+    "version" : "0.0.1"
+  },
+  "servers" : [ {
+    "url" : "https://localhost:8080"
+  } ],
+  "tags" : [ ],
+  "paths" : {
+    "/api/labeled-data/v1/ocr-data" : {
+      "post" : {
+        "tags" : [ "api" ],
+        "operationId" : "labeling-bounding-box-ocr-data",
+        "requestBody" : {
+          "content" : {
+            "application/json;charset=UTF-8" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/api-labeled-data-v1-ocr-data-2036243200"
+              },
+              "examples" : {
+                "labeling-bounding-box-ocr-data" : {
+                  "value" : "{\"boundingBoxId\":\"1\",\"label\":\"길동이\"}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/api-labeled-data-v1-ocr-data-2129884770"
+                },
+                "examples" : {
+                  "labeling-bounding-box-ocr-data" : {
+                    "value" : "{\"id\":\"af100459-e4b2-4118-8108-d45645561ed9\",\"dateTime\":\"2022-07-26T10:23:27.478+00:00\",\"success\":true,\"response\":null,\"error\":null}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/data/v1/target/{dataType}" : {
+      "get" : {
+        "tags" : [ "api" ],
+        "operationId" : "request-ocr-target-data",
+        "parameters" : [ {
+          "name" : "dataType",
+          "in" : "path",
+          "description" : "라벨링 데이터 타입",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/api-data-v1-target-dataType-63145092"
+                },
+                "examples" : {
+                  "request-ocr-target-data" : {
+                    "value" : "{\"id\":\"fd50e030-a4aa-4995-9ccd-ad2638382184\",\"dateTime\":\"2022-07-26T10:23:25.424+00:00\",\"success\":true,\"response\":{\"dataType\":\"OCR\",\"ocrDataId\":3,\"imageUrl\":\"https://belloga-dev-s3-raw-data-bucket.s3.ap-northeast-2.amazonaws.com/ocr-data/5350037-2005-0001-1290.JPG\",\"isLabeled\":false,\"boundingBox\":[{\"boundingBoxId\":7,\"x\":[10,10,10,10],\"y\":[10,10,10,10]}]},\"error\":null}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "api-data-v1-target-dataType-63145092" : {
+        "type" : "object",
+        "properties" : {
+          "dateTime" : {
+            "type" : "string",
+            "description" : "response time"
+          },
+          "response" : {
+            "type" : "object",
+            "properties" : {
+              "boundingBox" : {
+                "type" : "array",
+                "description" : "바운딩 박스 정보",
+                "items" : {
+                  "type" : "object",
+                  "properties" : {
+                    "boundingBoxId" : {
+                      "type" : "number",
+                      "description" : "바운딩 박스 id"
+                    },
+                    "x" : {
+                      "type" : "array",
+                      "description" : "바운딩 박스의 x좌표 리스트",
+                      "items" : {
+                        "oneOf" : [ {
+                          "type" : "object"
+                        }, {
+                          "type" : "boolean"
+                        }, {
+                          "type" : "string"
+                        }, {
+                          "type" : "number"
+                        } ]
+                      }
+                    },
+                    "y" : {
+                      "type" : "array",
+                      "description" : "바운딩 박스의 y좌표 리스트",
+                      "items" : {
+                        "oneOf" : [ {
+                          "type" : "object"
+                        }, {
+                          "type" : "boolean"
+                        }, {
+                          "type" : "string"
+                        }, {
+                          "type" : "number"
+                        } ]
+                      }
+                    }
+                  }
+                }
+              },
+              "isLabeled" : {
+                "type" : "boolean",
+                "description" : "레이블링 여부"
+              },
+              "imageUrl" : {
+                "type" : "string",
+                "description" : "OCR 데이터 이미지"
+              },
+              "dataType" : {
+                "type" : "string",
+                "description" : "응답 데이터의 라벨링 데이터 타입"
+              },
+              "ocrDataId" : {
+                "type" : "number",
+                "description" : "OCR 데이터 id"
+              }
+            }
+          },
+          "success" : {
+            "type" : "boolean",
+            "description" : "정상 응답 여부"
+          },
+          "id" : {
+            "type" : "string",
+            "description" : "logging을 위한 api response 고유 ID"
+          }
+        }
+      },
+      "api-labeled-data-v1-ocr-data-2036243200" : {
+        "type" : "object",
+        "properties" : {
+          "boundingBoxId" : {
+            "type" : "string",
+            "description" : "라벨링 하고자 하는 OCR 이미지의 바운딩박스 식별값"
+          },
+          "label" : {
+            "type" : "string",
+            "description" : "레이블링 값"
+          }
+        }
+      },
+      "api-labeled-data-v1-ocr-data-2129884770" : {
+        "type" : "object",
+        "properties" : {
+          "dateTime" : {
+            "type" : "string",
+            "description" : "response time"
+          },
+          "success" : {
+            "type" : "boolean",
+            "description" : "정상 응답 여부"
+          },
+          "id" : {
+            "type" : "string",
+            "description" : "logging을 위한 api response 고유 ID"
+          }
+        }
+      }
+    }
+  }
+}

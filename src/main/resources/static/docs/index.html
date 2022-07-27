@@ -487,13 +487,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h6 id="_요청_형식"><a class="anchor" href="#_요청_형식"></a><a class="link" href="#_요청_형식">요청 형식</a></h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/data/target/OCR HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/data/v1/target/OCR HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. /api/v1/data/target/{dataType}</caption>
+<caption class="title">Table 1. /api/data/v1/target/{dataType}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -529,9 +529,9 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json
-Content-Length: 370
+Content-Length: 372
 
-{"id":"c8dde2d4-2747-4a5d-8751-091f8a2fb8b7","dateTime":"2022-07-18T16:06:07.955+00:00","success":true,"response":{"dataType":"OCR","ocrDataId":2,"imageUrl":"https://belloga-dev-s3-raw-data-bucket.s3.ap-northeast-2.amazonaws.com/ocr-data/5350037-2005-0001-1289.JPG","isLabeled":false,"boundingBox":[{"boundingBoxId":6,"x":[10,10,10,10],"y":[10,10,10,10]}]},"error":null}</code></pre>
+{"id":"c5aeb890-c1d2-4650-88fb-5f51ef81b81b","dateTime":"2022-07-26T09:06:37.353+00:00","success":true,"response":{"dataType":"OCR","ocrDataId":10,"imageUrl":"https://belloga-dev-s3-raw-data-bucket.s3.ap-northeast-2.amazonaws.com/ocr-data/5350037-2005-0001-1297.JPG","isLabeled":false,"boundingBox":[{"boundingBoxId":14,"x":[10,10,10,10],"y":[10,10,10,10]}]},"error":null}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -615,7 +615,7 @@ Content-Length: 370
 <h6 id="_response_body"><a class="anchor" href="#_response_body"></a><a class="link" href="#_response_body">Response Body</a></h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-none hljs">{"id":"c8dde2d4-2747-4a5d-8751-091f8a2fb8b7","dateTime":"2022-07-18T16:06:07.955+00:00","success":true,"response":{"dataType":"OCR","ocrDataId":2,"imageUrl":"https://belloga-dev-s3-raw-data-bucket.s3.ap-northeast-2.amazonaws.com/ocr-data/5350037-2005-0001-1289.JPG","isLabeled":false,"boundingBox":[{"boundingBoxId":6,"x":[10,10,10,10],"y":[10,10,10,10]}]},"error":null}</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-none hljs">{"id":"c5aeb890-c1d2-4650-88fb-5f51ef81b81b","dateTime":"2022-07-26T09:06:37.353+00:00","success":true,"response":{"dataType":"OCR","ocrDataId":10,"imageUrl":"https://belloga-dev-s3-raw-data-bucket.s3.ap-northeast-2.amazonaws.com/ocr-data/5350037-2005-0001-1297.JPG","isLabeled":false,"boundingBox":[{"boundingBoxId":14,"x":[10,10,10,10],"y":[10,10,10,10]}]},"error":null}</code></pre>
 </div>
 </div>
 </div>
@@ -623,7 +623,7 @@ Content-Length: 370
 <h6 id="_try_with_curl"><a class="anchor" href="#_try_with_curl"></a><a class="link" href="#_try_with_curl">Try with curl</a></h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/api/v1/data/target/OCR' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/api/data/v1/target/OCR' -i -X GET \
     -H 'Content-Type: application/json;charset=UTF-8'</code></pre>
 </div>
 </div>
@@ -640,7 +640,7 @@ Content-Length: 370
 <h6 id="_요청_형식_2"><a class="anchor" href="#_요청_형식_2"></a><a class="link" href="#_요청_형식_2">요청 형식</a></h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/ocr-data/labeling HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/labeled-data/v1/ocr-data HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 labeler-id: hello-labeler
 Content-Length: 41
@@ -669,7 +669,7 @@ Vary: Access-Control-Request-Headers
 Content-Type: application/json
 Content-Length: 132
 
-{"id":"01a8f2da-4faa-4199-b9bf-6a57fbc0be88","dateTime":"2022-07-18T16:06:08.668+00:00","success":true,"response":null,"error":null}</code></pre>
+{"id":"80cb0efd-ad5d-48f4-bd8e-9c7d1e4c4b74","dateTime":"2022-07-26T09:06:39.179+00:00","success":true,"response":null,"error":null}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -718,7 +718,7 @@ Content-Length: 132
 <h6 id="_response_body_2"><a class="anchor" href="#_response_body_2"></a><a class="link" href="#_response_body_2">Response Body</a></h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-none hljs">{"id":"01a8f2da-4faa-4199-b9bf-6a57fbc0be88","dateTime":"2022-07-18T16:06:08.668+00:00","success":true,"response":null,"error":null}</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-none hljs">{"id":"80cb0efd-ad5d-48f4-bd8e-9c7d1e4c4b74","dateTime":"2022-07-26T09:06:39.179+00:00","success":true,"response":null,"error":null}</code></pre>
 </div>
 </div>
 </div>
@@ -726,7 +726,7 @@ Content-Length: 132
 <h6 id="_try_with_curl_2"><a class="anchor" href="#_try_with_curl_2"></a><a class="link" href="#_try_with_curl_2">Try with curl</a></h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/api/v1/ocr-data/labeling' -i -X POST \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/api/labeled-data/v1/ocr-data' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -H 'labeler-id: hello-labeler' \
     -d '{"boundingBoxId":"1","label":"길동이"}'</code></pre>
@@ -739,7 +739,7 @@ Content-Length: 132
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-07-19 00:54:21 +0900
+Last updated 2022-07-21 13:44:11 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
