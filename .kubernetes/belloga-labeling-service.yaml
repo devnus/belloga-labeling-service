@@ -42,7 +42,7 @@ spec:
       containers:
       - name: labeling-service
         image: 023778162658.dkr.ecr.ap-northeast-2.amazonaws.com/belloga-labeling-service:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         env:
