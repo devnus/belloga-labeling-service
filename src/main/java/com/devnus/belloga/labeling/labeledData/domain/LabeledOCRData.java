@@ -39,7 +39,7 @@ public class LabeledOCRData {
         this.labelerId = labelerId;
         this.ocrBoundingBox = ocrBoundingBox;
         this.textLabel = textLabel;
-        this.labelingUUID = UUID.randomUUID() + labelerId + id; // labelerId와 id를 섞어 충돌을 더더욱 방지
+        this.labelingUUID = UUID.randomUUID() + String.valueOf(id); // id를 섞어 충돌을 더더욱 방지
     }
 
 }
