@@ -26,6 +26,7 @@ CREATE TABLE ocr_bounding_box (
 CREATE TABLE labeled_ocr_data (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     labeler_id VARCHAR(127) NOT NULL,
+    labeling_uuid VARCHAR(127) NOT NULL,
     ocr_bounding_box_id BIGINT NOT NULL,
     text_label VARCHAR(511),
     FOREIGN KEY (ocr_bounding_box_id) REFERENCES ocr_bounding_box (id)

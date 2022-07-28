@@ -12,6 +12,7 @@ public class EventLabeledData {
     @AllArgsConstructor
     public static class PayTmpPointToLabeler {
         private String labelerId;
+        private String labelingUUID; // 포인트 지급 처리용 라벨링 고유값
         private Long value;
     }
 

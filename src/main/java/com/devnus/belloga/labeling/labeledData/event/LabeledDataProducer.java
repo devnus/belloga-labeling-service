@@ -16,7 +16,8 @@ public class LabeledDataProducer {
     @Value(value = "${app.topic.labeled-data.pay-tmp-point-to-labeler}")
     private String PAY_TMP_POINT_TO_LABELER;
 
-    public void payTmpPointToLabeler(String labelerId, Long value) {
-        kafkaTemplate.send(PAY_TMP_POINT_TO_LABELER, new EventLabeledData.PayTmpPointToLabeler(labelerId, value));
+    public void payTmpPointToLabeler(String labelerId, String labelingUUID, Long value) {
+        // 라벨링 UUID를 포함하여 point 마이크로서비스로 보낸다. // 그래야 OCR 외 다른 유형의 데이터도 포인트 지급 처리 가능
+        kafkaTemplate.send(PAY_TMP_POINT_TO_LABELER, new EventLabeledData.PayTmpPointToLabeler(labelerId, labelingUUID, value));
     }
 }

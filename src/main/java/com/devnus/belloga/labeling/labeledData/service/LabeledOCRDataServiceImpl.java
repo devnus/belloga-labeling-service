@@ -30,13 +30,15 @@ public class LabeledOCRDataServiceImpl implements LabeledOCRDataService {
         OCRBoundingBox ocrBoundingBox = ocrBoundingBoxRepository.findById(boundingBoxId)
                 .orElseThrow(()->new NotFoundDataException());
 
-        labeledOCRDataRepository.save(LabeledOCRData.builder()
+        LabeledOCRData labeledOCRData = LabeledOCRData.builder()
                 .labelerId(labelerId)
                 .ocrBoundingBox(ocrBoundingBox)
                 .textLabel(textLabel)
-                .build());
+                .build();
+
+        labeledOCRDataRepository.save(labeledOCRData);
 
         // 카프카로 임시 포인트를 지급 이벤트를 발행한다.
-        labeledDataProducer.payTmpPointToLabeler(labelerId, 15L); // 현재는 15포인트 고정 지급, 논의 필요
+        labeledDataProducer.payTmpPointToLabeler(labelerId, labeledOCRData.getLabelingUUID(), 15L); // 현재는 15포인트 고정 지급, 논의 필요
     }
 }
