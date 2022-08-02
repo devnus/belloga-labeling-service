@@ -24,9 +24,6 @@ public class OCRData {
     @Column(name = "raw_data_id")
     private Long rawDataId;
 
-    @Column(name = "is_labeled")
-    private boolean isLabeled;
-
     @Column(name = "image_url")
     private String imageUrl;
 
@@ -36,7 +33,6 @@ public class OCRData {
 
     @Builder
     public OCRData(Long rawDataId, String imageUrl) {
-        isLabeled = false;
         this.rawDataId = rawDataId;
         this.imageUrl = imageUrl;
     }

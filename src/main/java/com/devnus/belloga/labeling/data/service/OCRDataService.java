@@ -5,5 +5,5 @@ import com.devnus.belloga.labeling.data.dto.ResponseOCRData;
 import java.util.Optional;
 
 public interface OCRDataService {
-    Optional<ResponseOCRData.RequestTargetData> getRandomTargetOCRData();
+    Optional<ResponseOCRData.OCRBoundingBox> getRandomTargetOCRData();
 }
