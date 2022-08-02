@@ -13,6 +13,9 @@ pipeline {
 
         CONTAINER_NAME = 'belloga-labeling-service'
 
+        SWAGGER_ID = 'belloga-swagger'
+        OPEN_API_SPEC_NAME = 'open-api-3-labeling-service.json'
+
         AWS_CREDENTIAL_NAME = 'belloga-aws'
         ECR_PATH = '023778162658.dkr.ecr.ap-northeast-2.amazonaws.com'
         IMAGE_NAME = '023778162658.dkr.ecr.ap-northeast-2.amazonaws.com/belloga-labeling-service'
@@ -64,12 +67,22 @@ pipeline {
                 }
             }
         }
-        stage('generate api docs by spring rest docs and send swagger ui') {
+        stage('generate api docs by spring rest docs and send to swagger ui') {
             steps {
                 sh '''
         		 ./gradlew openapi3
         		 '''
-        		 // swagger UI로 보내는 로직 필요
+        		 // swagger UI로 보내는 로직
+        		 dir('src/main/resources/static/docs') {
+                    sshagent (credentials: ["$SWAGGER_ID"]) { // use SSH Agent
+                        sh """
+                            ssh -o StrictHostKeyChecking=no ubuntu@10.0.135.208 '
+                            sudo docker container ls
+                            '
+                        """
+                        sh 'scp ./$OPEN_API_SPEC_NAME ubuntu@10.0.135.208:/home/ubuntu/docs' //지정 경로로 파일 이동시켜 문서 변경
+                    }
+        		 }
             }
             post {
                 success {
