@@ -57,11 +57,9 @@ public class DataControllerTest {
                                 fieldWithPath("response.dataType").description("응답 데이터의 라벨링 데이터 타입"),
                                 fieldWithPath("response.ocrDataId").description("OCR 데이터 id"),
                                 fieldWithPath("response.imageUrl").description("OCR 데이터 이미지"),
-                                fieldWithPath("response.isLabeled").description("레이블링 여부"),
-                                fieldWithPath("response.boundingBox.[]").description("바운딩 박스 정보"),
-                                fieldWithPath("response.boundingBox.[].boundingBoxId").description("바운딩 박스 id").optional().type(JsonFieldType.NUMBER),
-                                fieldWithPath("response.boundingBox.[].x").description("바운딩 박스의 x좌표 리스트").optional().type(JsonFieldType.ARRAY),
-                                fieldWithPath("response.boundingBox.[].y").description("바운딩 박스의 y좌표 리스트").optional().type(JsonFieldType.ARRAY),
+                                fieldWithPath("response.boundingBoxId").description("OCR 바운딩 박스 데이터 ID"),
+                                fieldWithPath("response.x").description("바운딩 박스 X 좌표"),
+                                fieldWithPath("response.y").description("바운딩 박스 Y 좌표"),
                                 fieldWithPath("error").description("error 발생 시 에러 정보")
                         )
                 ));

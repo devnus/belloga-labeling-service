@@ -2,8 +2,7 @@
 CREATE TABLE ocr_data (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     raw_data_id BIGINT NOT NULL,
-    image_url VARCHAR(255) NOT NULL,
-    is_labeled BOOLEAN DEFAULT false
+    image_url VARCHAR(255) NOT NULL
 );
 
 /* OCR 데이터는 여러 바운딩 박스를 가진다. */
@@ -19,6 +18,7 @@ CREATE TABLE ocr_bounding_box (
     right_top_y INTEGER,
     right_down_x INTEGER,
     right_down_y INTEGER,
+    is_labeled BOOLEAN DEFAULT false,
     FOREIGN KEY (ocr_data_id) REFERENCES ocr_data (id)
 );
 

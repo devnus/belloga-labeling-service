@@ -30,10 +30,14 @@ public class OCRBoundingBox {
     @Embedded
     private RectanglePoint rectanglePoint; // 바운딩박스는 사각형 포인트를 가짐
 
+    @Column(name = "is_labeled")
+    private boolean isLabeled;
+
     @Builder
     public OCRBoundingBox(OCRAnnotationType annotationType, RectanglePoint rectanglePoint) {
         this.annotationType = annotationType;
         this.rectanglePoint = rectanglePoint;
+        isLabeled = false;
     }
 
     public void setOcrData(OCRData ocrData) {
