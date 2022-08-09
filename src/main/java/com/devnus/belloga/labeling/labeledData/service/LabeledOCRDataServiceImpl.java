@@ -36,9 +36,11 @@ public class LabeledOCRDataServiceImpl implements LabeledOCRDataService {
                 .textLabel(textLabel)
                 .build();
 
-        labeledOCRDataRepository.save(labeledOCRData);
+        labeledOCRData = labeledOCRDataRepository.save(labeledOCRData);
 
         // 카프카로 임시 포인트를 지급 이벤트를 발행한다.
         labeledDataProducer.payTmpPointToLabeler(labelerId, labeledOCRData.getLabelingUUID(), 15L); // 현재는 15포인트 고정 지급, 논의 필요
+        // 라벨링 검증을 위해 검증 마이크로서비스에 이벤트를 전달한다.
+        labeledDataProducer.producingOCRBoundingBoxLabelingEvent(ocrBoundingBox.getId(), labeledOCRData.getTextLabel(), labeledOCRData.getLabelingUUID());
     }
 }

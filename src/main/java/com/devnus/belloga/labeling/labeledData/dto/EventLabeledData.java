@@ -16,4 +16,13 @@ public class EventLabeledData {
         private Long value;
     }
 
+    @Builder
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class LabelingOCRBoundingBox {
+        private Long ocrBoundingBoxId; // 라벨링 대상 바운딩박스 ID값
+        private String textLabel;
+        private String labelingUUID;
+    }
 }
