@@ -32,3 +32,12 @@ CREATE TABLE labeled_ocr_data (
     labeling_verification_status VARCHAR(63), // 라벨링 검증 상태: WAITING, SUCCESS, FAIL
     FOREIGN KEY (ocr_bounding_box_id) REFERENCES ocr_bounding_box (id)
 );
+
+/* OCR 바운딩박스 검증 후 검증 성공 시 결과 테이블 */
+CREATE TABLE ocr_bounding_box_labeled_result (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    ocr_bounding_box_id BIGINT,
+    verification_labeling_count INTEGER,
+    accuracy FLOAT,
+    text_label VARCHAR(511)
+);
