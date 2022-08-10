@@ -40,3 +40,10 @@ app:
     labeled-data:
       pay-tmp-point-to-labeler: pay-tmp-point-to-labeler
       labeling-ocr-bounding-box: labeling-ocr-bounding-box
+
+    labeling-verification: # 라벨링 검증 마이크로서비스의 Aggregate
+      labeling-verification-success: labeling-verification-success # 라벨링 검증 성공 시, 네이밍 확인해봐야 함
+      labeling-verification-fail: labeling-verification-fail # 라벨링 검증 실패 시, 네이밍 확인해봐야 함
+
+    data: # data Aggregate
+      labeler-labeled-data-success: labeler-labeled-data-success # 라벨러의 라벨링 성공
