@@ -31,11 +31,16 @@ public class LabeledOCRData {
     @JoinColumn(name = "ocr_bounding_box_id") // 연관관계의 주인
     private OCRBoundingBox ocrBoundingBox;
 
+    @Column(name = "labeling_verification_status")
+    @Enumerated(EnumType.STRING)
+    private LabelingVerificationStatus labelingVerificationStatus;
+
     @Column(name = "text_label")
     private String textLabel;
 
     @Builder
     public LabeledOCRData(String labelerId, OCRBoundingBox ocrBoundingBox, String textLabel) {
+        this.labelingVerificationStatus = LabelingVerificationStatus.WAITING; // 기본은 검증 대기 상태
         this.labelerId = labelerId;
         this.ocrBoundingBox = ocrBoundingBox;
         this.textLabel = textLabel;
