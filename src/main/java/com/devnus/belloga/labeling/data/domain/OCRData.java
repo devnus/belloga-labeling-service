@@ -21,6 +21,9 @@ public class OCRData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "enterprise_id")
+    private String enterpriseId;
+
     @Column(name = "raw_data_id")
     private Long rawDataId;
 

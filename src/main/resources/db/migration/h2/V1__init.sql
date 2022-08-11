@@ -1,6 +1,7 @@
 /* OCR data 를 위한 테이블  */
 CREATE TABLE ocr_data (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    enterprise_id VARCHAR(63),
     raw_data_id BIGINT NOT NULL,
     image_url VARCHAR(255) NOT NULL
 );
@@ -36,8 +37,9 @@ CREATE TABLE labeled_ocr_data (
 /* OCR 바운딩박스 검증 후 검증 성공 시 결과 테이블 */
 CREATE TABLE ocr_bounding_box_labeled_result (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    enterprise_id VARCHAR(63),
     ocr_bounding_box_id BIGINT,
-    verification_labeling_count INTEGER,
+    total_labeler_num INTEGER,
     accuracy FLOAT,
     text_label VARCHAR(511)
 );

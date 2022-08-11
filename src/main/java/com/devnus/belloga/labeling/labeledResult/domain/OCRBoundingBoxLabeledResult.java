@@ -20,11 +20,14 @@ public class OCRBoundingBoxLabeledResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "enterprise_id")
+    private String enterpriseId; // 라벨링 완료 기록 이벤트에서 가져옴
+
     @Column(name = "ocr_bounding_box_id")
     private Long ocrBoundingBoxId;
 
-    @Column(name = "verification_labeling_count")
-    private Integer verificationLabelingCount;
+    @Column(name = "total_labeler_num")
+    private Integer totalLabelerNum;
 
     @Column(name = "accuracy")
     private Float accuracy;
@@ -33,9 +36,10 @@ public class OCRBoundingBoxLabeledResult {
     private String textLabel;
 
     @Builder
-    public OCRBoundingBoxLabeledResult(Long ocrBoundingBoxId, Integer verificationLabelingCount, Float accuracy, String textLabel) {
+    public OCRBoundingBoxLabeledResult(Long ocrBoundingBoxId, String enterpriseId, Integer totalLabelerNum, Float accuracy, String textLabel) {
+        this.enterpriseId = enterpriseId;
         this.ocrBoundingBoxId = ocrBoundingBoxId;
-        this.verificationLabelingCount = verificationLabelingCount;
+        this.totalLabelerNum = totalLabelerNum;
         this.accuracy = accuracy;
         this.textLabel = textLabel;
     }
