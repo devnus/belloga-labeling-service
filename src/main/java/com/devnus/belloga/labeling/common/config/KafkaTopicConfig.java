@@ -39,7 +39,6 @@ public class KafkaTopicConfig {
         return TopicBuilder.name(PAY_TMP_POINT_TO_LABELER)
                 .partitions(1)
                 .replicas(1)
-                .compact()
                 .build();
     }
 
@@ -51,7 +50,6 @@ public class KafkaTopicConfig {
         return TopicBuilder.name(LABELING_OCR_BOUNDING_BOX)
                 .partitions(1)
                 .replicas(1)
-                .compact()
                 .build();
     }
 }
