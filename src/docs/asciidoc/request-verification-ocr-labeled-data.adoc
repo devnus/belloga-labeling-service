@@ -1,0 +1,16 @@
+[[api-request-verification-ocr-labeled-data]]
+== 검증된 OCR 데이터 및 신뢰도 조회 API
+검증된 OCR 데이터 및 신뢰도 조회를 요청합니다.
+
+====== 요청 형식
+include::{snippets}/request-verification-ocr-labeled-data/http-request.adoc[]
+include::{snippets}/request-verification-ocr-labeled-data/path-parameters.adoc[]
+====== Request Body
+include::{snippets}/request-verification-ocr-labeled-data/request-body.adoc[]
+====== 응답 형식
+include::{snippets}/request-verification-ocr-labeled-data/http-response.adoc[]
+include::{snippets}/request-verification-ocr-labeled-data/response-fields.adoc[]
+====== Response Body
+include::{snippets}/request-verification-ocr-labeled-data/response-body.adoc[]
+====== Try with curl
+include::{snippets}/request-verification-ocr-labeled-data/curl-request.adoc[]

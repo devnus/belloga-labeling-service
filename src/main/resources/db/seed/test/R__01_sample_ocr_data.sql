@@ -75,3 +75,24 @@ INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_
 VALUES(13, 'RECTANGLE', 30,30,30,50,50,30,50,50);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
 VALUES(13, 'RECTANGLE', 10,10,10,20,20,10,20,20);
+
+
+/* 검증 결과 */
+INSERT INTO ocr_bounding_box_labeled_result(enterprise_id, ocr_bounding_box_id, total_labeler_num, reliability, text_label)
+VALUES('gildong', 1, 1005, 88.2, '검증결과값1');
+INSERT INTO ocr_bounding_box_labeled_result(enterprise_id, ocr_bounding_box_id, total_labeler_num, reliability, text_label)
+VALUES('gildong', 2, 125, 83.2, '검증결과값2');
+INSERT INTO ocr_bounding_box_labeled_result(enterprise_id, ocr_bounding_box_id, total_labeler_num, reliability, text_label)
+VALUES('gildong', 3, 2015, 95.2, '검증결과값3');
+INSERT INTO ocr_bounding_box_labeled_result(enterprise_id, ocr_bounding_box_id, total_labeler_num, reliability, text_label)
+VALUES('gildong', 4, 123, 89.2, '검증결과값4');
+INSERT INTO ocr_bounding_box_labeled_result(enterprise_id, ocr_bounding_box_id, total_labeler_num, reliability, text_label)
+VALUES('gildong', 5, 112, 85.24, '검증결과값5');
+INSERT INTO ocr_bounding_box_labeled_result(enterprise_id, ocr_bounding_box_id, total_labeler_num, reliability, text_label)
+VALUES('gildong', 6, 142, 82.212, '검증결과값6');
+INSERT INTO ocr_bounding_box_labeled_result(enterprise_id, ocr_bounding_box_id, total_labeler_num, reliability, text_label)
+VALUES('gildong', 7, 1401, 81.1, '검증결과값7');
+INSERT INTO ocr_bounding_box_labeled_result(enterprise_id, ocr_bounding_box_id, total_labeler_num, reliability, text_label)
+VALUES('gildong', 8, 392, 83.4, '검증결과값8');
+INSERT INTO ocr_bounding_box_labeled_result(enterprise_id, ocr_bounding_box_id, total_labeler_num, reliability, text_label)
+VALUES('gildong', 9, 182, 92.1, '검증결과값9');

@@ -39,7 +39,7 @@ CREATE TABLE ocr_bounding_box_labeled_result (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     enterprise_id VARCHAR(63),
     ocr_bounding_box_id BIGINT,
-    total_labeler_num INTEGER,
-    accuracy FLOAT,
+    total_labeler_num BIGINT,
+    reliability DOUBLE,
     text_label VARCHAR(511)
 );

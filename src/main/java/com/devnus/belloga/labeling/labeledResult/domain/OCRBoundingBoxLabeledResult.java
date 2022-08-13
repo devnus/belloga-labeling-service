@@ -1,6 +1,5 @@
 package com.devnus.belloga.labeling.labeledResult.domain;
 
-import com.devnus.belloga.labeling.data.domain.OCRBoundingBox;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,20 +26,20 @@ public class OCRBoundingBoxLabeledResult {
     private Long ocrBoundingBoxId;
 
     @Column(name = "total_labeler_num")
-    private Integer totalLabelerNum;
+    private Long totalLabelerNum;
 
-    @Column(name = "accuracy")
-    private Float accuracy;
+    @Column(name = "reliability")
+    private Double reliability; // 검증 신뢰도
 
     @Column(name = "text_label")
     private String textLabel;
 
     @Builder
-    public OCRBoundingBoxLabeledResult(Long ocrBoundingBoxId, String enterpriseId, Integer totalLabelerNum, Float accuracy, String textLabel) {
+    public OCRBoundingBoxLabeledResult(Long ocrBoundingBoxId, String enterpriseId, Long totalLabelerNum, Double reliability, String textLabel) {
         this.enterpriseId = enterpriseId;
         this.ocrBoundingBoxId = ocrBoundingBoxId;
         this.totalLabelerNum = totalLabelerNum;
-        this.accuracy = accuracy;
+        this.reliability = reliability;
         this.textLabel = textLabel;
     }
 }

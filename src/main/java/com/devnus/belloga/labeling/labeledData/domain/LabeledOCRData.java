@@ -47,4 +47,8 @@ public class LabeledOCRData {
         this.labelingUUID = UUID.randomUUID() + String.valueOf(id); // id를 섞어 충돌을 더더욱 방지
     }
 
+    public void changeLabelingVerificationStatus(LabelingVerificationStatus status) {
+        this.labelingVerificationStatus = status;
+    }
+
 }

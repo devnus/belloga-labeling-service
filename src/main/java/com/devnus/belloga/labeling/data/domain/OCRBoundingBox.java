@@ -43,4 +43,7 @@ public class OCRBoundingBox {
     public void setOcrData(OCRData ocrData) {
         this.ocrData = ocrData;
     }
+    public void changeLabeledStatus(boolean isLabeled) {
+        this.isLabeled = isLabeled;
+    }
 }

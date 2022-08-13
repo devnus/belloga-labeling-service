@@ -1,7 +1,9 @@
 package com.devnus.belloga.labeling.data.service;
 
+import com.devnus.belloga.labeling.common.exception.error.NotFoundDataException;
 import com.devnus.belloga.labeling.data.domain.OCRBoundingBox;
 import com.devnus.belloga.labeling.data.dto.ResponseOCRData;
+import com.devnus.belloga.labeling.data.event.DataProducer;
 import com.devnus.belloga.labeling.data.repository.OCRBoundingBoxRepository;
 import com.devnus.belloga.labeling.data.repository.OCRDataRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ import java.util.Optional;
 public class OCRDataServiceImpl implements OCRDataService {
     private final OCRDataRepository ocrDataRepository;
     private final OCRBoundingBoxRepository ocrBoundingBoxRepository;
+    private DataProducer dataProducer;
     /**
      * 랜덤으로 라벨링 되지 않은 OCR바운딩박스에 해당하는 데이터 중 하나를 선택해 해당 OCR 데이터를 가져온다.
      * 즉 하나의 OCR데이터가 여러 OCR 바운딩박스를 가져도 라벨링되지 않은 OCR 바운딩박스 하나만 반환해주어야함
@@ -35,5 +38,23 @@ public class OCRDataServiceImpl implements OCRDataService {
             return Optional.ofNullable(null);
         }
         return Optional.ofNullable(ResponseOCRData.OCRBoundingBox.of(targetPage.getContent().get(0)));
+    }
+
+    /**
+     * OCR 라벨링 검증 성공 시 해당 바운딩박스는 라벨링 성공으로 변경
+     * labelingResult로 결과를 비동기로 보낸다.
+     * @param boundingBoxId
+     * @param totalLabelerNum
+     * @param reliability
+     * @param textLabel
+     */
+    @Transactional
+    @Override
+    public void recordSuccessOCRLabelingResult(Long boundingBoxId, Long totalLabelerNum, Double reliability, String textLabel) {
+        OCRBoundingBox ocrBoundingBox = ocrBoundingBoxRepository.findById(boundingBoxId)
+                .orElseThrow(() -> new NotFoundDataException());
+        ocrBoundingBox.changeLabeledStatus(true); // 검증된 라벨링 했습니당
+
+        dataProducer.recordOCRVerificationResult(ocrBoundingBox.getOcrData().getEnterpriseId(), boundingBoxId, totalLabelerNum, reliability, textLabel); // 이벤트 전송
     }
 }

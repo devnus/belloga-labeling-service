@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface OCRDataService {
     Optional<ResponseOCRData.OCRBoundingBox> getRandomTargetOCRData();
+    void recordSuccessOCRLabelingResult(Long boundingBoxId, Long totalLabelerNum, Double accuracy, String textLabel);
 }
