@@ -35,5 +35,10 @@ public class DataConsumer {
         }
     }
 
+    @KafkaListener(topics = "data-preprocessing", groupId = "data-preprocessing-1")
+    protected void consumePreprocessingData(Object event) throws IOException {
+
+    }
+
 
 }

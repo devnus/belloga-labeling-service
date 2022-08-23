@@ -37,6 +37,9 @@ spring:
 
 app:
   topic:
+    preprocessing:
+      data-preprocessing: data-preprocessing
+
     labeled-data:
       pay-tmp-point-to-labeler: pay-tmp-point-to-labeler
       labeling-ocr-bounding-box: labeling-ocr-bounding-box
