@@ -1,6 +1,7 @@
 package com.devnus.belloga.labeling.data.event;
 
 import com.devnus.belloga.labeling.data.domain.DataType;
+import com.devnus.belloga.labeling.data.dto.EventPreprocessing;
 import com.devnus.belloga.labeling.data.dto.EventVerification;
 import com.devnus.belloga.labeling.data.service.OCRDataService;
 import lombok.RequiredArgsConstructor;
@@ -35,9 +36,9 @@ public class DataConsumer {
         }
     }
 
-    @KafkaListener(topics = "data-preprocessing", groupId = "data-preprocessing-1")
-    protected void consumePreprocessingData(Object event) throws IOException {
-
+    @KafkaListener(topics = "ocr-data-preprocessing", groupId = "ocr-data-preprocessing-1")
+    protected void consumeOCRPreprocessingData(Object event) throws IOException {
+        EventPreprocessing.OCRPreprocessingData eventData = (EventPreprocessing.OCRPreprocessingData) event;
     }
 
 

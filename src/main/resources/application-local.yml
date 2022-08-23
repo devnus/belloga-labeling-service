@@ -38,7 +38,7 @@ spring:
 app:
   topic:
     preprocessing:
-      data-preprocessing: data-preprocessing
+      ocr-data-preprocessing: data-preprocessing
 
     labeled-data:
       pay-tmp-point-to-labeler: pay-tmp-point-to-labeler
