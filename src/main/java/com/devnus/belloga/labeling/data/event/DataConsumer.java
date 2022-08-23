@@ -22,23 +22,30 @@ public class DataConsumer {
      * @return
      * @throws IOException
      */
-    @KafkaListener(topics = "success-verify-text-label", groupId = "success-verify-text-label-1")
-    protected void consumeSuccessVerifyOCRLabelingEvent(Object event) throws IOException {
-        EventVerification.SuccessVerifyTextLabel eventData = (EventVerification.SuccessVerifyTextLabel) event;
-        if(eventData.getDataType().equals(DataType.OCR)) {
+    @KafkaListener(topics = "success-verify-text-label", groupId = "success-verify-text-label-1", containerFactory = "eventVerificationSuccessVerifyTextLabelListener")
+    protected void consumeSuccessVerifyOCRLabelingEvent(EventVerification.SuccessVerifyTextLabel event) throws IOException {
+        if(event.getDataType().equals(DataType.OCR)) {
             // 데이터 타입이 OCR 인 경우
             // 라벨링 상태 성공으로 변경
             ocrDataService.recordSuccessOCRLabelingResult(
-                    eventData.getBoundingBoxId(),
-                    eventData.getTotalLabelerNum(),
-                    eventData.getReliability(),
-                    eventData.getTextLabel());
+                    event.getBoundingBoxId(),
+                    event.getTotalLabelerNum(),
+                    event.getReliability(),
+                    event.getTextLabel());
         }
     }
 
-    @KafkaListener(topics = "ocr-data-preprocessing", groupId = "ocr-data-preprocessing-1")
-    protected void consumeOCRPreprocessingData(Object event) throws IOException {
-        EventPreprocessing.OCRPreprocessingData eventData = (EventPreprocessing.OCRPreprocessingData) event;
+    /**
+     * 전처리된 OCR 데이터를 라벨링 수행 위해 라벨링 마이크로서비스로 업로드한다.
+     * @param event
+     * @throws IOException
+     */
+    @KafkaListener(topics = "ocr-data-preprocessing", groupId = "ocr-data-preprocessing-1", containerFactory = "eventPreprocessingOCRPreprocessingDataListener")
+    protected void consumeOCRPreprocessingData(EventPreprocessing.OCRPreprocessingData event) throws IOException {
+        ocrDataService.uploadPreprocessingData(event.getEnterpriseId(),
+                event.getRawDataId(),
+                event.getImageUrl(),
+                event.getBoundingBoxInfo());
     }
 
 

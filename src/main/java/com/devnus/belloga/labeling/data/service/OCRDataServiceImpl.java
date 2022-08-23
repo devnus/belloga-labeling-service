@@ -1,7 +1,11 @@
 package com.devnus.belloga.labeling.data.service;
 
 import com.devnus.belloga.labeling.common.exception.error.NotFoundDataException;
+import com.devnus.belloga.labeling.data.domain.OCRAnnotationType;
 import com.devnus.belloga.labeling.data.domain.OCRBoundingBox;
+import com.devnus.belloga.labeling.data.domain.OCRData;
+import com.devnus.belloga.labeling.data.domain.RectanglePoint;
+import com.devnus.belloga.labeling.data.dto.EventPreprocessing;
 import com.devnus.belloga.labeling.data.dto.ResponseOCRData;
 import com.devnus.belloga.labeling.data.event.DataProducer;
 import com.devnus.belloga.labeling.data.repository.OCRBoundingBoxRepository;
@@ -56,5 +60,41 @@ public class OCRDataServiceImpl implements OCRDataService {
         ocrBoundingBox.changeLabeledStatus(true); // 검증된 라벨링 했습니당
 
         dataProducer.recordOCRVerificationResult(ocrBoundingBox.getOcrData().getEnterpriseId(), boundingBoxId, totalLabelerNum, reliability, textLabel); // 이벤트 전송
+    }
+
+    /**
+     * 전처리된 OCR 데이터를 디비에 업로드한다.
+     * @param enterpriseId
+     * @param rawDataId
+     * @param imageUrl
+     * @param boundingBoxList
+     */
+    @Transactional
+    @Override
+    public void uploadPreprocessingData(String enterpriseId, Long rawDataId, String imageUrl, EventPreprocessing.BoundingBox[] boundingBoxList) {
+        OCRData ocrData = OCRData.builder()
+                .enterpriseId(enterpriseId)
+                .rawDataId(rawDataId)
+                .imageUrl(imageUrl)
+                .build();
+
+        for(int i = 0 ; i < boundingBoxList.length ; i++) {
+            EventPreprocessing.BoundingBox info = boundingBoxList[i];
+            ocrData.addBoundingBox(OCRBoundingBox.builder()
+                            .annotationType(OCRAnnotationType.RECTANGLE)
+                            .rectanglePoint(RectanglePoint.builder()
+                                    .leftTopX(info.getX()[0])
+                                    .leftDownX(info.getX()[1])
+                                    .rightTopX(info.getX()[2])
+                                    .rightDownX(info.getX()[3])
+                                    .leftTopY(info.getY()[0])
+                                    .leftDownY(info.getY()[1])
+                                    .rightTopY(info.getY()[2])
+                                    .rightDownY(info.getY()[3])
+                                    .build())
+                    .build());
+        }
+
+        ocrData = ocrDataRepository.save(ocrData);
     }
 }

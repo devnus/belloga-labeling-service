@@ -35,7 +35,8 @@ public class OCRData {
     private List<OCRBoundingBox> boundingBoxList = new ArrayList<>();
 
     @Builder
-    public OCRData(Long rawDataId, String imageUrl) {
+    public OCRData(String enterpriseId, Long rawDataId, String imageUrl) {
+        this.enterpriseId = enterpriseId;
         this.rawDataId = rawDataId;
         this.imageUrl = imageUrl;
     }

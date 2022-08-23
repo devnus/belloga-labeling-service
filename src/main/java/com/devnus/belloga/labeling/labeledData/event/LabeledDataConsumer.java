@@ -19,11 +19,10 @@ public class LabeledDataConsumer {
      * @param event
      * @throws IOException
      */
-    @KafkaListener(topics = "success-verify-labeling", groupId = "success-verify-labeling-1")
-    protected void consumeSuccessLabelerLabeledData(Object event) throws IOException {
-        EventVerification.SuccessVerifyLabeling eventResult = (EventVerification.SuccessVerifyLabeling) event;
-        if(eventResult.getDataType().equals(DataType.OCR)) {
-            labeledOCRDataService.changeLabelingVerificationStatusSuccess(eventResult.getLabelingUUID());
+    @KafkaListener(topics = "success-verify-labeling", groupId = "success-verify-labeling-1", containerFactory = "eventVerificationSuccessVerifyTextLabelLabeledDataListener")
+    protected void consumeSuccessLabelerLabeledData(EventVerification.SuccessVerifyLabeling event) throws IOException {
+        if(event.getDataType().equals(DataType.OCR)) {
+            labeledOCRDataService.changeLabelingVerificationStatusSuccess(event.getLabelingUUID());
         }
         // 다른 유형의 데이터
     }
@@ -33,11 +32,10 @@ public class LabeledDataConsumer {
      * @param event
      * @throws IOException
      */
-    @KafkaListener(topics = "fail-verify-labeling", groupId = "fail-verify-labeling-1")
-    protected void consumeFailVerityLabeling(Object event) throws IOException {
-        EventVerification.FailVerifyLabeling eventResult = (EventVerification.FailVerifyLabeling) event;
-        if(eventResult.getDataType().equals(DataType.OCR)) {
-            labeledOCRDataService.changeLabelingVerificationStatusFail(eventResult.getLabelingUUID());
+    @KafkaListener(topics = "fail-verify-labeling", groupId = "fail-verify-labeling-1", containerFactory = "eventVerificationFailVerifyTextLabelLabeledDataListener")
+    protected void consumeFailVerityLabeling(EventVerification.FailVerifyLabeling event) throws IOException {
+        if(event.getDataType().equals(DataType.OCR)) {
+            labeledOCRDataService.changeLabelingVerificationStatusFail(event.getLabelingUUID());
         }
         // 다른 유형의 데이터
     }

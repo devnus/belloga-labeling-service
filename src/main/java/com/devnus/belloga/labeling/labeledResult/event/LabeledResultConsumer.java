@@ -16,12 +16,11 @@ public class LabeledResultConsumer {
 
     /**
      * 검증된 라벨링 결과에 대해 기록처리
-     * @param event
+     * @param eventResult
      * @throws IOException
      */
-    @KafkaListener(topics = "record-verification-result", groupId = "record-verification-result-1")
-    protected void consumeRecordVerificationResult(Object event) throws IOException {
-        EventData.RecordVerityOCRLabeledResult eventResult = (EventData.RecordVerityOCRLabeledResult) event;
+    @KafkaListener(topics = "record-verification-result", groupId = "record-verification-result-1", containerFactory = "eventDataRecordVerityOCRLabeledResultListener")
+    protected void consumeRecordVerificationResult(EventData.RecordVerityOCRLabeledResult eventResult) throws IOException {
         // 컨슘받아 기록한다.
 
         if(eventResult.getDataType().equals(DataType.OCR)) {
