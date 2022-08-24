@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
+import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -93,9 +94,9 @@ public class LabeledOCRDataControllerTest {
                                         fieldWithPath("dateTime").description("response time"),
                                         fieldWithPath("success").description("정상 응답 여부"),
                                         fieldWithPath("response.content.[]").description("content 정보"),
-                                        fieldWithPath("response.content.[].labelingUUID").description("라벨링 UUID 정보").optional().type(String.class),
-                                        fieldWithPath("response.content.[].labelingVerificationStatus").description("라벨링 검증 상태").optional().type(String.class),
-                                        fieldWithPath("response.content.[].textLabel").description("내가 입력한 값").optional().type(String.class),
+                                        fieldWithPath("response.content.[].labelingUUID").description("라벨링 UUID 정보").optional().type(JsonFieldType.STRING),
+                                        fieldWithPath("response.content.[].labelingVerificationStatus").description("라벨링 검증 상태").optional().type(JsonFieldType.STRING),
+                                        fieldWithPath("response.content.[].textLabel").description("내가 입력한 값").optional().type(JsonFieldType.STRING),
 
                                         fieldWithPath("response.pageable.sort.unsorted").description("페이징 처리 sort 정보"),
                                         fieldWithPath("response.pageable.sort.sorted").description("페이징 처리 sort 정보"),
