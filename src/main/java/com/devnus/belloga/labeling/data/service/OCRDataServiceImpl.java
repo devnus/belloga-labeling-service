@@ -23,7 +23,7 @@ import java.util.Optional;
 public class OCRDataServiceImpl implements OCRDataService {
     private final OCRDataRepository ocrDataRepository;
     private final OCRBoundingBoxRepository ocrBoundingBoxRepository;
-    private DataProducer dataProducer;
+    private final DataProducer dataProducer;
     /**
      * 랜덤으로 라벨링 되지 않은 OCR바운딩박스에 해당하는 데이터 중 하나를 선택해 해당 OCR 데이터를 가져온다.
      * 즉 하나의 OCR데이터가 여러 OCR 바운딩박스를 가져도 라벨링되지 않은 OCR 바운딩박스 하나만 반환해주어야함
