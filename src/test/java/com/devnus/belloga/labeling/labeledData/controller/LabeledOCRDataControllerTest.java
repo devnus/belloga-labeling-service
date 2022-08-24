@@ -1,6 +1,8 @@
 package com.devnus.belloga.labeling.labeledData.controller;
 
+import com.devnus.belloga.labeling.data.domain.DataType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
@@ -18,6 +20,8 @@ import java.util.Map;
 import static org.hamcrest.Matchers.notNullValue;
 import static com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -74,5 +78,48 @@ public class LabeledOCRDataControllerTest {
                         .andExpect(jsonPath("$.success", is(notNullValue())));
         }
 
+        @Test
+        @DisplayName("내가 라벨링한 정보 조회")
+        void getMyLabelingInfo () throws Exception {
+                mockMvc.perform(RestDocumentationRequestBuilders.get("/api/labeled-data/v1/ocr-data")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .header("labeler-id", "gildong")
+                        )
+                        .andExpect(status().isOk())
+                        .andDo(print())
+                        .andDo(document("get-my-labeling-info-ocr",
+                                responseFields(
+                                        fieldWithPath("id").description("logging을 위한 api response 고유 ID"),
+                                        fieldWithPath("dateTime").description("response time"),
+                                        fieldWithPath("success").description("정상 응답 여부"),
+                                        fieldWithPath("response.content.[]").description("content 정보"),
+                                        fieldWithPath("response.content.[].labelingUUID").description("라벨링 UUID 정보").optional().type(String.class),
+                                        fieldWithPath("response.content.[].labelingVerificationStatus").description("라벨링 검증 상태").optional().type(String.class),
+                                        fieldWithPath("response.content.[].textLabel").description("내가 입력한 값").optional().type(String.class),
+
+                                        fieldWithPath("response.pageable.sort.unsorted").description("페이징 처리 sort 정보"),
+                                        fieldWithPath("response.pageable.sort.sorted").description("페이징 처리 sort 정보"),
+                                        fieldWithPath("response.pageable.sort.empty").description("페이징 처리 sort 정보"),
+                                        fieldWithPath("response.pageable.pageNumber").description("page number"),
+                                        fieldWithPath("response.pageable.pageSize").description("page size"),
+                                        fieldWithPath("response.pageable.offset").description("page offset"),
+                                        fieldWithPath("response.pageable.paged").description("paged"),
+                                        fieldWithPath("response.pageable.unpaged").description("unpaged"),
+                                        fieldWithPath("response.totalPages").description("total pages"),
+                                        fieldWithPath("response.totalElements").description("total elements"),
+                                        fieldWithPath("response.last").description("last"),
+                                        fieldWithPath("response.numberOfElements").description("numberOfElements"),
+                                        fieldWithPath("response.size").description("size"),
+                                        fieldWithPath("response.sort.unsorted").description("unsorted"),
+                                        fieldWithPath("response.sort.sorted").description("sorted"),
+                                        fieldWithPath("response.sort.empty").description("empty"),
+                                        fieldWithPath("response.number").description("number"),
+                                        fieldWithPath("response.first").description("first"),
+                                        fieldWithPath("response.empty").description("empty"),
+
+                                        fieldWithPath("error").description("error 발생 시 에러 정보")
+                                )
+                        ));
+        }
 }
 

@@ -5,9 +5,12 @@ import com.devnus.belloga.labeling.data.domain.OCRBoundingBox;
 import com.devnus.belloga.labeling.data.repository.OCRBoundingBoxRepository;
 import com.devnus.belloga.labeling.labeledData.domain.LabeledOCRData;
 import com.devnus.belloga.labeling.labeledData.domain.LabelingVerificationStatus;
+import com.devnus.belloga.labeling.labeledData.dto.ResponseLabeledOCRData;
 import com.devnus.belloga.labeling.labeledData.event.LabeledDataProducer;
 import com.devnus.belloga.labeling.labeledData.repository.LabeledOCRDataRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -79,5 +82,12 @@ public class LabeledOCRDataServiceImpl implements LabeledOCRDataService {
             // 신뢰도를 내림
             // 포인트를 회수
         //
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ResponseLabeledOCRData.LabeledOCRDataInfo> getMyLabelingInfo(Pageable pageable, String labelerId) {
+        Page<LabeledOCRData> pages = labeledOCRDataRepository.findByLabelerId(pageable, labelerId);
+        return pages.map(ResponseLabeledOCRData.LabeledOCRDataInfo::of);
     }
 }

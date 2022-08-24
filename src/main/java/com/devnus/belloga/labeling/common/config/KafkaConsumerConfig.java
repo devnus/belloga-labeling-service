@@ -1,7 +1,7 @@
 package com.devnus.belloga.labeling.common.config;
 
 import com.devnus.belloga.labeling.data.dto.EventPreprocessing;
-import com.devnus.belloga.labeling.data.dto.EventVerification;
+import com.devnus.belloga.labeling.labeledData.dto.EventVerification;
 import com.devnus.belloga.labeling.labeledResult.dto.EventData;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -37,7 +37,12 @@ public class KafkaConsumerConfig {
 
     @Bean
     ConsumerFactory<String,Object> consumerFactory(){
-        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), new JsonDeserializer<>(Object.class));
+        JsonDeserializer<Object> deserializer = new JsonDeserializer<>(Object.class);
+
+        deserializer.setRemoveTypeHeaders(false);
+        deserializer.addTrustedPackages("*");
+        deserializer.setUseTypeMapperForKey(true);
+        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), deserializer);
     }
 
     @Bean
@@ -48,7 +53,12 @@ public class KafkaConsumerConfig {
     }
     @Bean
     ConsumerFactory<String,EventPreprocessing.OCRPreprocessingData> eventPreprocessingOCRPreprocessingDataFactory(){
-        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), new JsonDeserializer<>(EventPreprocessing.OCRPreprocessingData.class));
+        JsonDeserializer<EventPreprocessing.OCRPreprocessingData> deserializer = new JsonDeserializer<>(EventPreprocessing.OCRPreprocessingData.class);
+
+        deserializer.setRemoveTypeHeaders(false);
+        deserializer.addTrustedPackages("*");
+        deserializer.setUseTypeMapperForKey(true);
+        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), deserializer);
     }
 
     @Bean
@@ -59,44 +69,64 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    ConsumerFactory<String, EventVerification.SuccessVerifyTextLabel> eventVerificationSuccessVerifyTextLabelFactory(){
-        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), new JsonDeserializer<>(EventVerification.SuccessVerifyTextLabel.class));
+    ConsumerFactory<String, com.devnus.belloga.labeling.data.dto.EventVerification.SuccessVerifyTextLabel> eventVerificationSuccessVerifyTextLabelFactory(){
+        JsonDeserializer<com.devnus.belloga.labeling.data.dto.EventVerification.SuccessVerifyTextLabel> deserializer = new JsonDeserializer<>(com.devnus.belloga.labeling.data.dto.EventVerification.SuccessVerifyTextLabel.class);
+
+        deserializer.setRemoveTypeHeaders(false);
+        deserializer.addTrustedPackages("*");
+        deserializer.setUseTypeMapperForKey(true);
+        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), deserializer);
     }
 
     @Bean
-    ConcurrentKafkaListenerContainerFactory<String, EventVerification.SuccessVerifyTextLabel> eventVerificationSuccessVerifyTextLabelListener(){
-        ConcurrentKafkaListenerContainerFactory<String, EventVerification.SuccessVerifyTextLabel> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    ConcurrentKafkaListenerContainerFactory<String, com.devnus.belloga.labeling.data.dto.EventVerification.SuccessVerifyTextLabel> eventVerificationSuccessVerifyTextLabelListener(){
+        ConcurrentKafkaListenerContainerFactory<String, com.devnus.belloga.labeling.data.dto.EventVerification.SuccessVerifyTextLabel> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(eventVerificationSuccessVerifyTextLabelFactory());
         return factory;
     }
 
     @Bean
-    ConsumerFactory<String, com.devnus.belloga.labeling.labeledData.dto.EventVerification.SuccessVerifyLabeling> eventVerificationSuccessVerifyTextLabelLabeledDataFactory(){
-        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), new JsonDeserializer<>(com.devnus.belloga.labeling.labeledData.dto.EventVerification.SuccessVerifyLabeling.class));
+    ConsumerFactory<String, EventVerification.SuccessVerifyLabeling> eventVerificationSuccessVerifyTextLabelLabeledDataFactory(){
+        JsonDeserializer<EventVerification.SuccessVerifyLabeling> deserializer = new JsonDeserializer<>(EventVerification.SuccessVerifyLabeling.class);
+
+        deserializer.setRemoveTypeHeaders(false);
+        deserializer.addTrustedPackages("*");
+        deserializer.setUseTypeMapperForKey(true);
+        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), deserializer);
     }
 
     @Bean
-    ConcurrentKafkaListenerContainerFactory<String, com.devnus.belloga.labeling.labeledData.dto.EventVerification.SuccessVerifyLabeling> eventVerificationSuccessVerifyTextLabelLabeledDataListener(){
-        ConcurrentKafkaListenerContainerFactory<String, com.devnus.belloga.labeling.labeledData.dto.EventVerification.SuccessVerifyLabeling> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    ConcurrentKafkaListenerContainerFactory<String, EventVerification.SuccessVerifyLabeling> eventVerificationSuccessVerifyTextLabelLabeledDataListener(){
+        ConcurrentKafkaListenerContainerFactory<String, EventVerification.SuccessVerifyLabeling> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(eventVerificationSuccessVerifyTextLabelLabeledDataFactory());
         return factory;
     }
 
     @Bean
-    ConsumerFactory<String, com.devnus.belloga.labeling.labeledData.dto.EventVerification.FailVerifyLabeling> eventVerificationFailVerifyTextLabelLabeledDataFactory(){
-        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), new JsonDeserializer<>(com.devnus.belloga.labeling.labeledData.dto.EventVerification.FailVerifyLabeling.class));
+    ConsumerFactory<String, EventVerification.FailVerifyLabeling> eventVerificationFailVerifyTextLabelLabeledDataFactory(){
+        JsonDeserializer<EventVerification.FailVerifyLabeling> deserializer = new JsonDeserializer<>(EventVerification.FailVerifyLabeling.class);
+
+        deserializer.setRemoveTypeHeaders(false);
+        deserializer.addTrustedPackages("*");
+        deserializer.setUseTypeMapperForKey(true);
+        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), deserializer);
     }
 
     @Bean
-    ConcurrentKafkaListenerContainerFactory<String, com.devnus.belloga.labeling.labeledData.dto.EventVerification.FailVerifyLabeling> eventVerificationFailVerifyTextLabelLabeledDataListener(){
-        ConcurrentKafkaListenerContainerFactory<String, com.devnus.belloga.labeling.labeledData.dto.EventVerification.FailVerifyLabeling> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    ConcurrentKafkaListenerContainerFactory<String, EventVerification.FailVerifyLabeling> eventVerificationFailVerifyTextLabelLabeledDataListener(){
+        ConcurrentKafkaListenerContainerFactory<String, EventVerification.FailVerifyLabeling> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(eventVerificationFailVerifyTextLabelLabeledDataFactory());
         return factory;
     }
 
     @Bean
     ConsumerFactory<String, EventData.RecordVerityOCRLabeledResult> eventDataRecordVerityOCRLabeledResultFactory(){
-        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), new JsonDeserializer<>(EventData.RecordVerityOCRLabeledResult.class));
+        JsonDeserializer<EventData.RecordVerityOCRLabeledResult> deserializer = new JsonDeserializer<>(EventData.RecordVerityOCRLabeledResult.class);
+
+        deserializer.setRemoveTypeHeaders(false);
+        deserializer.addTrustedPackages("*");
+        deserializer.setUseTypeMapperForKey(true);
+        return new DefaultKafkaConsumerFactory<>(configProps(), new StringDeserializer(), deserializer);
     }
 
     @Bean
