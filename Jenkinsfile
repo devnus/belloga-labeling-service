@@ -4,9 +4,6 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') // set timeout 1 hour
     }
     environment {
-        TIME_ZONE = 'Asia/Seoul'
-        PROFILE = 'demo'
-
         REPOSITORY_CREDENTIAL_ID = 'gitlab-jenkins-key'
         REPOSITORY_URL = 'git@git.swmgit.org:swm-13-main/13_swm56/belloga-labeling-service.git'
         TARGET_BRANCH = 'master'
