@@ -44,7 +44,7 @@ public class LabeledOCRData {
         this.labelerId = labelerId;
         this.ocrBoundingBox = ocrBoundingBox;
         this.textLabel = textLabel;
-        this.labelingUUID = UUID.randomUUID() + String.valueOf(id); // id를 섞어 충돌을 더더욱 방지
+        this.labelingUUID = UUID.randomUUID() + "/" + labelerId.substring(0, 3);
     }
 
     public void changeLabelingVerificationStatus(LabelingVerificationStatus status) {
