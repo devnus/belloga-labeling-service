@@ -62,8 +62,9 @@ public class LabeledOCRDataServiceImpl implements LabeledOCRDataService {
         data.changeLabelingVerificationStatus(LabelingVerificationStatus.SUCCESS);
         // 통과 시 알맞은 이벤트를 발행하는 비동기 통신 진행해야 함
             // 신뢰도를 올림
-            // 임시포인트를 포인트로 변환
-        //
+            //
+        // 임시포인트를 포인트로 변환
+        labeledDataProducer.changeTmpPointToPoint(labelingUUID);
     }
 
     /**
@@ -80,8 +81,9 @@ public class LabeledOCRDataServiceImpl implements LabeledOCRDataService {
         data.changeLabelingVerificationStatus(LabelingVerificationStatus.FAIL);
         // 불통 시 알맞은 이벤트를 발행하는 비동기 통신 진행해야 함
             // 신뢰도를 내림
-            // 포인트를 회수
-        //
+            //
+        // 포인트를 회수
+        labeledDataProducer.deleteTmpPoint(labelingUUID);
     }
 
     @Override

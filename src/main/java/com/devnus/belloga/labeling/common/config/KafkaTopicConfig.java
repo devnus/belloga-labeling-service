@@ -22,6 +22,12 @@ public class KafkaTopicConfig {
     @Value(value = "${app.topic.labeled-data.labeling-ocr-bounding-box}")
     private String LABELING_OCR_BOUNDING_BOX;
 
+    @Value(value = "${app.topic.labeled-data.change-tmp-point-to-point}")
+    private String CHANGE_TMP_POINT_TO_POINT;
+
+    @Value(value = "${app.topic.labeled-data.delete-tmp-point}")
+    private String DELETE_TMP_POINT;
+
     @Bean
     public KafkaAdmin kafkaAdmin() {
         Map<String, Object> configs = new HashMap<>();
@@ -48,6 +54,22 @@ public class KafkaTopicConfig {
     @Bean
     public NewTopic createLabelingOCRBoundingBoxEventTopic() {
         return TopicBuilder.name(LABELING_OCR_BOUNDING_BOX)
+                .partitions(1)
+                .replicas(1)
+                .build();
+    }
+
+    @Bean
+    public NewTopic changeTmpPointToPointEventTopic() {
+        return TopicBuilder.name(CHANGE_TMP_POINT_TO_POINT)
+                .partitions(1)
+                .replicas(1)
+                .build();
+    }
+
+    @Bean
+    public NewTopic deleteTmpPointEventTopic() {
+        return TopicBuilder.name(DELETE_TMP_POINT)
                 .partitions(1)
                 .replicas(1)
                 .build();

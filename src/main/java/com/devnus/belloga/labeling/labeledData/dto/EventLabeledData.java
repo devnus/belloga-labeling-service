@@ -25,4 +25,19 @@ public class EventLabeledData {
         private String textLabel;
         private String labelingUUID;
     }
+
+    @Builder
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ChangeTmpPointToPoint {
+        private String labelingUUID;
+    }
+    @Builder
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class DeleteTmpPoint {
+        private String labelingUUID;
+    }
 }
