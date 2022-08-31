@@ -41,6 +41,8 @@ app:
     labeled-data:
       pay-tmp-point-to-labeler: pay-tmp-point-to-labeler
       labeling-ocr-bounding-box: labeling-ocr-bounding-box
+      change-tmp-point-to-point: change-tmp-point-to-point # 임시포인트를 실제 포인트로 변환 이벤트
+      delete-tmp-point: delete-tmp-point # 임시 포인트 삭제 이벤트
 
     verification: # 라벨링 검증 마이크로서비스의 Aggregate
       success-verify-labeling: success-verify-labeling # 라벨링 검증 성공 시, 네이밍 확인해봐야 함
