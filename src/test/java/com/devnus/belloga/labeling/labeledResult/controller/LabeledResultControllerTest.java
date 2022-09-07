@@ -40,15 +40,21 @@ public class LabeledResultControllerTest {
     @Test
     @DisplayName("검증된 OCR 데이터 및 신뢰도 조회 API 성공 테스트")
     void getVerificationOCRDataSuccess () throws Exception {
-        mockMvc.perform(RestDocumentationRequestBuilders.get("/api/labeled-result/v1/verification/results/{type}", DataType.OCR)
+        // given
+        Long targetProjectId = 1L;
+        DataType targetType = DataType.OCR;
+        String enterpriseId = "gildong";
+
+        mockMvc.perform(RestDocumentationRequestBuilders.get("/api/labeled-result/v1/verification/results/{type}/{projectId}", targetType, targetProjectId)
                 .contentType(MediaType.APPLICATION_JSON)
-                .header("enterprise-id", "gildong")
+                .header("enterprise-id", enterpriseId)
         )
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andDo(document("request-verification-ocr-labeled-data",
                         pathParameters(
-                                parameterWithName("type").description("라벨링 데이터 타입")
+                                parameterWithName("type").description("라벨링 데이터 타입"),
+                                parameterWithName("projectId").description("조회하고자하는 기업 사용자가 생성한 프로젝트 ID")
                         ),
                         responseFields(
                                 fieldWithPath("id").description("logging을 위한 api response 고유 ID"),
