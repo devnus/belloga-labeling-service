@@ -26,6 +26,7 @@ public class LabeledResultConsumer {
         if(eventResult.getDataType().equals(DataType.OCR)) {
             // OCR인 경우
             ocrBoundingBoxLabeledResultService.recordLabeledResult(
+                    eventResult.getProjectId(),
                     eventResult.getEnterpriseId(),
                     eventResult.getBoundingBoxId(),
                     eventResult.getTextLabel(),

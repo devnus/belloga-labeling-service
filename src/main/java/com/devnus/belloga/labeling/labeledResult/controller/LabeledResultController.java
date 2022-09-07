@@ -27,16 +27,17 @@ public class LabeledResultController {
      * @param type
      * @return
      */
-    @GetMapping("/v1/verification/results/{type}")
+    @GetMapping("/v1/verification/results/{type}/{projectId}")
     public ResponseEntity<CommonResponse> getVerificationLabeledResult(
             @GetAccountIdentification(role = UserRole.ENTERPRISE) String enterpriseId,
             @PathVariable("type") DataType type,
+            @PathVariable("projectId") Long projectId,
             Pageable pageable) {
 
         Object result = null;
         if(type.equals(DataType.OCR)) {
             // OCR 바운딩 박스 검증 데이터 조회
-            result = ocrBoundingBoxLabeledResultService.getOCRBoundingBoxLabeledResult(pageable, enterpriseId);
+            result = ocrBoundingBoxLabeledResultService.getOCRBoundingBoxLabeledResult(pageable, enterpriseId, projectId);
         }
         return new ResponseEntity<>(CommonResponse.builder()
                 .success(true)

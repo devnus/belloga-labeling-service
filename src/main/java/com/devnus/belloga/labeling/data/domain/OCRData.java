@@ -27,6 +27,9 @@ public class OCRData {
     @Column(name = "raw_data_id")
     private Long rawDataId;
 
+    @Column(name = "project_id")
+    private Long projectId;
+
     @Column(name = "image_url")
     private String imageUrl;
 
@@ -35,7 +38,8 @@ public class OCRData {
     private List<OCRBoundingBox> boundingBoxList = new ArrayList<>();
 
     @Builder
-    public OCRData(String enterpriseId, Long rawDataId, String imageUrl) {
+    public OCRData(Long projectId, String enterpriseId, Long rawDataId, String imageUrl) {
+        this.projectId = projectId;
         this.enterpriseId = enterpriseId;
         this.rawDataId = rawDataId;
         this.imageUrl = imageUrl;

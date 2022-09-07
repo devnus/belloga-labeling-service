@@ -22,6 +22,9 @@ public class OCRBoundingBoxLabeledResult {
     @Column(name = "enterprise_id")
     private String enterpriseId; // 라벨링 완료 기록 이벤트에서 가져옴
 
+    @Column(name = "project_id")
+    private Long projectId;
+
     @Column(name = "ocr_bounding_box_id")
     private Long ocrBoundingBoxId;
 
@@ -35,7 +38,8 @@ public class OCRBoundingBoxLabeledResult {
     private String textLabel;
 
     @Builder
-    public OCRBoundingBoxLabeledResult(Long ocrBoundingBoxId, String enterpriseId, Long totalLabelerNum, Double reliability, String textLabel) {
+    public OCRBoundingBoxLabeledResult(Long projectId, Long ocrBoundingBoxId, String enterpriseId, Long totalLabelerNum, Double reliability, String textLabel) {
+        this.projectId = projectId;
         this.enterpriseId = enterpriseId;
         this.ocrBoundingBoxId = ocrBoundingBoxId;
         this.totalLabelerNum = totalLabelerNum;

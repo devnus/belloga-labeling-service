@@ -12,6 +12,7 @@ public class EventData {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class RecordVerityOCRLabeledResult {
+        private Long projectId;
         private DataType dataType;
         private String enterpriseId;
         private Long boundingBoxId;

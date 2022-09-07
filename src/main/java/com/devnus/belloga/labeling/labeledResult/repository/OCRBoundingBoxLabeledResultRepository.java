@@ -6,5 +6,5 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OCRBoundingBoxLabeledResultRepository extends JpaRepository<OCRBoundingBoxLabeledResult, Long> {
-    Page<OCRBoundingBoxLabeledResult> findByEnterpriseId(Pageable pageable, String enterpriseId);
+    Page<OCRBoundingBoxLabeledResult> findByEnterpriseIdAndProjectId(Pageable pageable, String enterpriseId, Long projectId);
 }

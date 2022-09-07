@@ -42,7 +42,7 @@ public class DataConsumer {
      */
     @KafkaListener(topics = "ocr-data-preprocessing", groupId = "ocr-data-preprocessing-1", containerFactory = "eventPreprocessingOCRPreprocessingDataListener")
     protected void consumeOCRPreprocessingData(EventPreprocessing.OCRPreprocessingData event) throws IOException {
-        ocrDataService.uploadPreprocessingData(event.getEnterpriseId(),
+        ocrDataService.uploadPreprocessingData(event.getProjectId(), event.getEnterpriseId(),
                 event.getRawDataId(),
                 event.getImageUrl(),
                 event.getBoundingBoxInfo());

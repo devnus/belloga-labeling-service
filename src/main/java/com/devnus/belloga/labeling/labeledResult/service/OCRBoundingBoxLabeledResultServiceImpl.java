@@ -31,8 +31,9 @@ public class OCRBoundingBoxLabeledResultServiceImpl implements OCRBoundingBoxLab
      */
     @Transactional
     @Override
-    public void recordLabeledResult(String enterpriseId, Long boundingBoxId, String textLabel, Long totalLabelerNum, Double reliability) {
+    public void recordLabeledResult(Long projectId, String enterpriseId, Long boundingBoxId, String textLabel, Long totalLabelerNum, Double reliability) {
         ocrBoundingBoxLabeledResultRepository.save(OCRBoundingBoxLabeledResult.builder()
+                        .projectId(projectId)
                         .enterpriseId(enterpriseId)
                         .ocrBoundingBoxId(boundingBoxId)
                         .textLabel(textLabel)
@@ -49,9 +50,9 @@ public class OCRBoundingBoxLabeledResultServiceImpl implements OCRBoundingBoxLab
      */
     @Transactional(readOnly = true)
     @Override
-    public Page<ResponseLabeledResult.OCRBoundingBoxVerificationResult> getOCRBoundingBoxLabeledResult(Pageable pageable, String enterpriseId) {
+    public Page<ResponseLabeledResult.OCRBoundingBoxVerificationResult> getOCRBoundingBoxLabeledResult(Pageable pageable, String enterpriseId, Long projectId) {
         // pageable 해서 가져온다.
-        Page<OCRBoundingBoxLabeledResult> list = ocrBoundingBoxLabeledResultRepository.findByEnterpriseId(pageable, enterpriseId);
+        Page<OCRBoundingBoxLabeledResult> list = ocrBoundingBoxLabeledResultRepository.findByEnterpriseIdAndProjectId(pageable, enterpriseId, projectId);
 
         // mapping 수행, aggregate 가 달라서 of가 아니라 서비스 단에서 해주어야 할듯
         // 최적화 무조건 필요 논의해야함, 일단 급해서 이렇게 처리

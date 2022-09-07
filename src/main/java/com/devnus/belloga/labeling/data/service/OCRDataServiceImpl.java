@@ -59,7 +59,7 @@ public class OCRDataServiceImpl implements OCRDataService {
                 .orElseThrow(() -> new NotFoundDataException());
         ocrBoundingBox.changeLabeledStatus(true); // 검증된 라벨링 했습니당
 
-        dataProducer.recordOCRVerificationResult(ocrBoundingBox.getOcrData().getEnterpriseId(), boundingBoxId, totalLabelerNum, reliability, textLabel); // 이벤트 전송
+        dataProducer.recordOCRVerificationResult(ocrBoundingBox.getOcrData().getProjectId(), ocrBoundingBox.getOcrData().getEnterpriseId(), boundingBoxId, totalLabelerNum, reliability, textLabel); // 이벤트 전송
     }
 
     /**
@@ -71,8 +71,9 @@ public class OCRDataServiceImpl implements OCRDataService {
      */
     @Transactional
     @Override
-    public void uploadPreprocessingData(String enterpriseId, Long rawDataId, String imageUrl, EventPreprocessing.BoundingBox[] boundingBoxList) {
+    public void uploadPreprocessingData(Long projectId, String enterpriseId, Long rawDataId, String imageUrl, EventPreprocessing.BoundingBox[] boundingBoxList) {
         OCRData ocrData = OCRData.builder()
+                .projectId(projectId)
                 .enterpriseId(enterpriseId)
                 .rawDataId(rawDataId)
                 .imageUrl(imageUrl)

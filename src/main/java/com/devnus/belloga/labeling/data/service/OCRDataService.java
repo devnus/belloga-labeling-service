@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface OCRDataService {
     Optional<ResponseOCRData.OCRBoundingBox> getRandomTargetOCRData();
     void recordSuccessOCRLabelingResult(Long boundingBoxId, Long totalLabelerNum, Double accuracy, String textLabel);
-    void uploadPreprocessingData(String enterpriseId, Long rawDataId, String imageUrl, EventPreprocessing.BoundingBox[] boundingBoxList);
+    void uploadPreprocessingData(Long projectId, String enterpriseId, Long rawDataId, String imageUrl, EventPreprocessing.BoundingBox[] boundingBoxList);
 }

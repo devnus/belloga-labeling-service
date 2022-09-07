@@ -24,6 +24,7 @@ public class EventPreprocessing {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class OCRPreprocessingData {
+        private Long projectId;
         private DataType dataType;
         private String enterpriseId;
         private Long rawDataId;

@@ -18,7 +18,7 @@ public class DataProducer {
     /**
      * LabeledResult 쪽으로 OCR 검증된 라벨링을 보낸다.
      */
-    public void recordOCRVerificationResult(String enterpriseId, Long boundingBoxId, Long totalLabelerNum, Double reliability, String textLabel) {
-        kafkaTemplate.send(RECORD_VERIFICATION_RESULT, new EventData.RecordVerityOCRLabeledResult(DataType.OCR, enterpriseId, boundingBoxId, totalLabelerNum, reliability, textLabel));
+    public void recordOCRVerificationResult(Long projectId, String enterpriseId, Long boundingBoxId, Long totalLabelerNum, Double reliability, String textLabel) {
+        kafkaTemplate.send(RECORD_VERIFICATION_RESULT, new EventData.RecordVerityOCRLabeledResult(projectId, DataType.OCR, enterpriseId, boundingBoxId, totalLabelerNum, reliability, textLabel));
     }
 }
