@@ -1,5 +1,6 @@
 package com.devnus.belloga.labeling.labeledData.domain;
 
+import com.devnus.belloga.labeling.common.domain.BaseTimeEntity;
 import com.devnus.belloga.labeling.data.domain.OCRBoundingBox;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.util.UUID;
 @Table(name = "labeled_ocr_data")
 @Getter
 @NoArgsConstructor
-public class LabeledOCRData {
+public class LabeledOCRData extends BaseTimeEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

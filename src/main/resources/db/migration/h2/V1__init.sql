@@ -4,6 +4,8 @@ CREATE TABLE ocr_data (
     enterprise_id VARCHAR(63),
     project_id BIGINT NOT NULL,
     raw_data_id BIGINT NOT NULL,
+    created_date TIMESTAMP,
+    last_modified_date TIMESTAMP,
     image_url VARCHAR(255) NOT NULL
 );
 
@@ -21,6 +23,8 @@ CREATE TABLE ocr_bounding_box (
     right_down_x INTEGER,
     right_down_y INTEGER,
     is_labeled BOOLEAN DEFAULT false,
+    created_date TIMESTAMP,
+    last_modified_date TIMESTAMP,
     FOREIGN KEY (ocr_data_id) REFERENCES ocr_data (id)
 );
 
@@ -32,6 +36,8 @@ CREATE TABLE labeled_ocr_data (
     ocr_bounding_box_id BIGINT NOT NULL,
     text_label VARCHAR(511),
     labeling_verification_status VARCHAR(63), // 라벨링 검증 상태: WAITING, SUCCESS, FAIL
+    created_date TIMESTAMP,
+    last_modified_date TIMESTAMP,
     FOREIGN KEY (ocr_bounding_box_id) REFERENCES ocr_bounding_box (id)
 );
 
@@ -43,5 +49,7 @@ CREATE TABLE ocr_bounding_box_labeled_result (
     ocr_bounding_box_id BIGINT,
     total_labeler_num BIGINT,
     reliability DOUBLE,
+    created_date TIMESTAMP,
+    last_modified_date TIMESTAMP,
     text_label VARCHAR(511)
 );
