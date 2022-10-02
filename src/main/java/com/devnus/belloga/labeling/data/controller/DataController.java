@@ -44,4 +44,24 @@ public class DataController {
                 .response(result)
                 .build(), HttpStatus.OK);
     }
+
+    /**
+     * 프로젝트의 라벨링 진행도 반환
+     */
+    @GetMapping("/v1/target/{type}/projects/{projectId}")
+    public ResponseEntity<CommonResponse> requestProgressRate(@PathVariable("type")DataType type, @PathVariable Long projectId) {
+        Object result = null; // OCR 타입 외 다른 유형의 데이터도 받도록 result를 별도로 선언
+
+        switch (type) {
+            case OCR:
+                result = ocrDataService.getProgressRateByProjectId(projectId);
+                break;
+        }
+
+        return new ResponseEntity<>(CommonResponse.builder()
+                .success(true)
+                .response(result)
+                .build(), HttpStatus.OK);
+    }
+
 }

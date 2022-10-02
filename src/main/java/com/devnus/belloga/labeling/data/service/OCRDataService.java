@@ -11,4 +11,5 @@ public interface OCRDataService {
     Optional<ResponseOCRData.OCRBoundingBox> getRandomTargetOCRData();
     void recordSuccessOCRLabelingResult(Long boundingBoxId, Long totalLabelerNum, Double accuracy, String textLabel);
     void uploadPreprocessingData(Long projectId, String enterpriseId, Long rawDataId, String imageUrl, EventPreprocessing.BoundingBox[] boundingBoxList);
+    ResponseOCRData.ProgressRate getProgressRateByProjectId(Long projectId);
 }

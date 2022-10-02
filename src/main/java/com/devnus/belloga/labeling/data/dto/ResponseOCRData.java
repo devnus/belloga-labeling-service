@@ -2,8 +2,10 @@ package com.devnus.belloga.labeling.data.dto;
 
 import com.devnus.belloga.labeling.data.domain.DataType;
 import com.devnus.belloga.labeling.data.domain.OCRData;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,5 +33,13 @@ public class ResponseOCRData {
                     .y(ocrBoundingBox.getRectanglePoint().getAllPointYByList())
                     .build();
         }
+    }
+
+    @Builder
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ProgressRate{
+        private Double progressRate;
     }
 }
