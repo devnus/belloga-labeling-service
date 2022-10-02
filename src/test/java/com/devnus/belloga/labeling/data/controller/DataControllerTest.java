@@ -64,4 +64,27 @@ public class DataControllerTest {
                         )
                 ));
     }
+
+    @Test
+    @DisplayName("OCR 라벨링 프로젝트의 진행도 확인 API 성공 테스트")
+    void requestProgressRateTest () throws Exception {
+        mockMvc.perform(RestDocumentationRequestBuilders.get("/api/data/v1/target/{dataType}/projects/{projectId}", DataType.OCR, 1L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andDo(document("request-ocr-project-progress-rate",
+                        pathParameters(
+                                parameterWithName("dataType").description("라벨링 데이터 타입"),
+                                parameterWithName("projectId").description("진행도를 확인 할 프로젝트 ID")
+                        ),
+                        responseFields(
+                                fieldWithPath("id").description("logging을 위한 api response 고유 ID"),
+                                fieldWithPath("dateTime").description("response time"),
+                                fieldWithPath("success").description("정상 응답 여부"),
+                                fieldWithPath("response.progressRate").description("프로젝트의 라벨링 진행도"),
+                                fieldWithPath("error").description("error 발생 시 에러 정보")
+                        )
+                ));
+    }
 }

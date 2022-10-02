@@ -73,8 +73,8 @@ INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_
 VALUES(12, 'RECTANGLE', 30,30,30,50,50,30,50,50);
 INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
 VALUES(13, 'RECTANGLE', 30,30,30,50,50,30,50,50);
-INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y)
-VALUES(13, 'RECTANGLE', 10,10,10,20,20,10,20,20);
+INSERT INTO ocr_bounding_box(ocr_data_id, ocr_annotation_type, left_top_x, left_top_y, left_down_x, left_down_y, right_top_x, right_top_y, right_down_x, right_down_y, is_labeled)
+VALUES(13, 'RECTANGLE', 10,10,10,20,20,10,20,20,true);
 
 
 /* 검증 결과 */

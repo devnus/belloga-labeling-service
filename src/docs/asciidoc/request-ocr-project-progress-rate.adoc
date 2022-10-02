@@ -1,0 +1,16 @@
+[[api-request-ocr-project-progress-rate]]
+== OCR 라벨링 진행도 확인 API
+해당 프로젝트의 라벨링 진행도를 확인
+
+====== 요청 형식
+include::{snippets}/request-ocr-project-progress-rate/http-request.adoc[]
+include::{snippets}/request-ocr-project-progress-rate/path-parameters.adoc[]
+====== Request Body
+include::{snippets}/request-ocr-project-progress-rate/request-body.adoc[]
+====== 응답 형식
+include::{snippets}/request-ocr-project-progress-rate/http-response.adoc[]
+include::{snippets}/request-ocr-project-progress-rate/response-fields.adoc[]
+====== Response Body
+include::{snippets}/request-ocr-project-progress-rate/response-body.adoc[]
+====== Try with curl
+include::{snippets}/request-ocr-project-progress-rate/curl-request.adoc[]

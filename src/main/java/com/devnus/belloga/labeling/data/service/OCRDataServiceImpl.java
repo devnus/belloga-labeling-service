@@ -98,4 +98,19 @@ public class OCRDataServiceImpl implements OCRDataService {
 
         ocrData = ocrDataRepository.save(ocrData);
     }
+
+    /**
+     * 해당 프로젝트의 진행도를 반환한다
+     */
+    @Transactional(readOnly = true)
+    @Override
+    public ResponseOCRData.ProgressRate getProgressRateByProjectId(Long projectId){
+        Long totalCount = ocrBoundingBoxRepository.countByProjectIdAll(projectId);
+        Long labeledCount = ocrBoundingBoxRepository.countByProjectIdIsLabeled(projectId);
+        Double progressRate = ((double) labeledCount/ (double) totalCount) * 100.0d;
+
+        return ResponseOCRData.ProgressRate.builder()
+                .progressRate(progressRate)
+                .build();
+    }
 }
