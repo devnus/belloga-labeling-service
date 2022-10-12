@@ -97,6 +97,7 @@ public class LabeledOCRDataControllerTest {
                                         fieldWithPath("response.content.[].labelingUUID").description("라벨링 UUID 정보").optional().type(JsonFieldType.STRING),
                                         fieldWithPath("response.content.[].labelingVerificationStatus").description("라벨링 검증 상태").optional().type(JsonFieldType.STRING),
                                         fieldWithPath("response.content.[].textLabel").description("내가 입력한 값").optional().type(JsonFieldType.STRING),
+                                        fieldWithPath("response.content.[].createdDate").description("라벨링한 날짜").optional().type(JsonFieldType.STRING),
 
                                         fieldWithPath("response.pageable.sort.unsorted").description("페이징 처리 sort 정보"),
                                         fieldWithPath("response.pageable.sort.sorted").description("페이징 처리 sort 정보"),
