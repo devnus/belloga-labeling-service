@@ -107,6 +107,9 @@ public class OCRDataServiceImpl implements OCRDataService {
     public ResponseOCRData.ProgressRate getProgressRateByProjectId(Long projectId){
         Long totalCount = ocrBoundingBoxRepository.countByProjectIdAll(projectId);
         Long labeledCount = ocrBoundingBoxRepository.countByProjectIdIsLabeled(projectId);
+        if(labeledCount == null) labeledCount = 0L;
+        if(totalCount == null || totalCount == 0) totalCount = 1L;
+
         Double progressRate = ((double) labeledCount/ (double) totalCount) * 100.0d;
 
         return ResponseOCRData.ProgressRate.builder()
