@@ -28,7 +28,8 @@ public class EventPreprocessing {
         private DataType dataType;
         private String enterpriseId;
         private Long rawDataId;
-        private String imageUrl;
+        private String fileUrl;
+        private String fileName;
         private BoundingBox[] boundingBoxInfo;
     }
 }

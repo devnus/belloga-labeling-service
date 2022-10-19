@@ -44,9 +44,7 @@ public class DataConsumer {
     protected void consumeOCRPreprocessingData(EventPreprocessing.OCRPreprocessingData event) throws IOException {
         ocrDataService.uploadPreprocessingData(event.getProjectId(), event.getEnterpriseId(),
                 event.getRawDataId(),
-                event.getImageUrl(),
+                event.getFileUrl(),
                 event.getBoundingBoxInfo());
     }
-
-
 }
