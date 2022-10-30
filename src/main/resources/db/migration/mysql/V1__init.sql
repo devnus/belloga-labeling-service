@@ -13,7 +13,7 @@ CREATE TABLE ocr_data (
 CREATE TABLE ocr_bounding_box (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     ocr_data_id BIGINT NOT NULL,
-    ocr_annotation_type VARCHAR(127),
+    ocr_annotation_type VARCHAR(63),
     left_top_x INTEGER,
     left_top_y INTEGER,
     left_down_x INTEGER,
