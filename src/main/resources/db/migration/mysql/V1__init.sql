@@ -1,7 +1,7 @@
 /* OCR data 를 위한 테이블  */
 CREATE TABLE ocr_data (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    enterprise_id VARCHAR(63),
+    enterprise_id VARCHAR(127),
     project_id BIGINT NOT NULL,
     raw_data_id BIGINT NOT NULL,
     created_date TIMESTAMP,
@@ -13,7 +13,7 @@ CREATE TABLE ocr_data (
 CREATE TABLE ocr_bounding_box (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     ocr_data_id BIGINT NOT NULL,
-    ocr_annotation_type VARCHAR(63),
+    ocr_annotation_type VARCHAR(127),
     left_top_x INTEGER,
     left_top_y INTEGER,
     left_down_x INTEGER,
@@ -45,7 +45,7 @@ CREATE TABLE labeled_ocr_data (
 CREATE TABLE ocr_bounding_box_labeled_result (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     project_id BIGINT,
-    enterprise_id VARCHAR(63),
+    enterprise_id VARCHAR(127),
     ocr_bounding_box_id BIGINT,
     total_labeler_num BIGINT,
     reliability DOUBLE,
