@@ -35,7 +35,7 @@ CREATE TABLE labeled_ocr_data (
     labeling_uuid VARCHAR(127) NOT NULL,
     ocr_bounding_box_id BIGINT NOT NULL,
     text_label VARCHAR(511),
-    labeling_verification_status VARCHAR(63), // 라벨링 검증 상태: WAITING, SUCCESS, FAIL
+    labeling_verification_status VARCHAR(63), /* 라벨링 검증 상태: WAITING, SUCCESS, FAIL */
     created_date TIMESTAMP,
     last_modified_date TIMESTAMP,
     FOREIGN KEY (ocr_bounding_box_id) REFERENCES ocr_bounding_box (id)
